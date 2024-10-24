@@ -7,5 +7,12 @@
 </head>
 <body>
     <h1>Home</h1>
+    <% for( const user of users ) { %>
+        <p>Username <%= user.username %></p>
+        <p>Password <%= user.password %></p>
+        <p>Is Admin <%= user.is_admin %></p>
+        <hr>
+    <% } %>
+    <a href="/create">Add data</a>
 </body>
 </html>

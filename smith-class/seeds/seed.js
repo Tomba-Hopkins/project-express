@@ -1,19 +1,46 @@
-import connectDB from "../config/db.js";
-import User from "../models/user.js";
+import mongoose from "mongoose"
+import * as path from 'path'
+import { config } from "dotenv"
+
+config({
+    path: path.resolve(import.meta.dirname, '..', '.env')
+})
 
 
-connectDB()
 
+mongoose.connect(process.env.MONGO)
+.then(() => console.log('DB connected'))
+.catch((err) => console.log(err))
+
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    is_admin: {
+        type: Boolean,
+        required: true,
+        enum: [true, false]
+    },
+})
+
+
+const User = mongoose.model('User', userSchema)
 
 const isiData = async() => {
     const user = new User({
         username: 'admin',
         password: 'mradmin',
-        isAdmin: false
+        is_admin: false
     })
 
     try {
-        await user.save()
+        // await user.save()
+        console.log(1)
     } catch(err) {
         console.log(err)
     }
