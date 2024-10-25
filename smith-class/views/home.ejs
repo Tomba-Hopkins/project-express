@@ -12,6 +12,7 @@
         <p>Username: <%= users[i].username %></p>
         <p>Password: <%= users[i].password %></p>
         <p>Is Admin: <%= users[i].is_admin %></p>
+        <a href="/user/<%= users[i]._id %>">See Detail</a>
         <hr>
     <% } %>
     <a href="/create">Add data</a>

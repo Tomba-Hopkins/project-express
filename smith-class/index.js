@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { config } from "dotenv";
 import * as path from 'path'
+import methodovr from 'method-override'
 config()
 
 const app = express()
@@ -36,13 +37,14 @@ app.set('views', path.join(import.meta.dirname,'views'))
 
 
 app.use(express.urlencoded({extended: true}))
+app.use(methodovr('_metode'))
 
 
 
 app.get('/', async (req, res) => {
 
     const users = await User.find({})
-    console.log(users)
+    // console.log(users)
     
     res.render('home', {
         users
@@ -52,6 +54,30 @@ app.get('/', async (req, res) => {
 
 app.get('/create', (req, res) => {
     res.render('create')
+})
+
+app.get('/user/:id', async(req, res) => {
+    const { id } = req.params
+    const user = await User.findById(id)
+    res.render('detail', {
+        user
+    })
+})
+
+app.put('/user/:id', async(req, res) => {
+    const {id} = req.params
+    const {username, password} = req.body
+
+    await User.findByIdAndUpdate(id, {username, password})
+    res.redirect('/')
+})
+
+app.get('/user/:id/update', async(req, res) => {
+    const { id } = req.params
+    const user = await User.findById(id)
+    res.render('update', {
+        user
+    })
 })
 
 app.post('/create', async(req, res) => {
