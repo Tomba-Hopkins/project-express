@@ -11,5 +11,8 @@
     <p>Password: <%= user.password %></p>
     <p>Is Admin: <%= user.is_admin %></p>
     <a href="/user/<%= user._id %>/update">Edit</a>
+    <form action="/user/<%= user._id %>?_metode=DELETE" method="post">
+        <button type="submit">Delete User</button>
+    </form>
 </body>
 </html>

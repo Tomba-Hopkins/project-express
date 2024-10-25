@@ -72,6 +72,12 @@ app.put('/user/:id', async(req, res) => {
     res.redirect('/')
 })
 
+app.delete('/user/:id', async(req, res) => {
+    const {id} = req.params
+    await User.findByIdAndDelete(id)
+    res.redirect('/')
+})
+
 app.get('/user/:id/update', async(req, res) => {
     const { id } = req.params
     const user = await User.findById(id)
