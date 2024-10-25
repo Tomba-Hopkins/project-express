@@ -35,6 +35,9 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(import.meta.dirname,'views'))
 
 
+app.use(express.urlencoded({extended: true}))
+
+
 
 app.get('/', async (req, res) => {
 
@@ -44,6 +47,22 @@ app.get('/', async (req, res) => {
     res.render('home', {
         users
     })
+})
+
+
+app.get('/create', (req, res) => {
+    res.render('create')
+})
+
+app.post('/create', async(req, res) => {
+    const {username, password, is_admin} = req.body
+    const user = new User({
+        username,
+        password,
+        is_admin
+    })
+    await user.save()
+    res.redirect('/')
 })
 
 const port = process.env.PORT || 5000

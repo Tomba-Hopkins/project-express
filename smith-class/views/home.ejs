@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1>Home</h1>
-    <% for( const user of users ) { %>
-        <p>Username <%= user.username %></p>
-        <p>Password <%= user.password %></p>
-        <p>Is Admin <%= user.is_admin %></p>
+    <% for( let i = 0; i < users.length; i++ ) { %>
+        <p>No: <%= i + 1 %></p>
+        <p>Username: <%= users[i].username %></p>
+        <p>Password: <%= users[i].password %></p>
+        <p>Is Admin: <%= users[i].is_admin %></p>
         <hr>
     <% } %>
     <a href="/create">Add data</a>
