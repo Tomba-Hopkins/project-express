@@ -4,6 +4,7 @@ import * as path from 'path'
 import methodovr from 'method-override'
 import connectDB from './config/db.js'
 import router from "./routes/routes.js";
+import ejsmate from 'ejs-mate'
 
 config()
 connectDB()
@@ -14,10 +15,14 @@ const app = express()
 app.set('view engine', 'ejs')
 app.set('views', path.join(import.meta.dirname,'views'))
 
+app.engine('ejs', ejsmate)
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodovr('_metode'))
 app.use('/', router)
+
+// statis buat tailwind
+app.use(express.static(path.join(import.meta.dirname, 'src')))
 
 
 const port = process.env.PORT || 5000

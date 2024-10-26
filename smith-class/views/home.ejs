@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-</head>
-<body>
+<%- layout('layouts/tubuh') %>
     <h1>Home</h1>
     <% for( let i = 0; i < users.length; i++ ) { %>
         <p>No: <%= i + 1 %></p>
@@ -16,5 +9,3 @@
         <hr>
     <% } %>
     <a href="/create">Add data</a>
-</body>
-</html>
