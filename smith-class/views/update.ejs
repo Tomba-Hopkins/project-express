@@ -3,11 +3,11 @@
     <form action="/user/<%= user._id %>?_metode=PUT" method="post">
         <div>
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" value="<%= user.username %>" >
+            <input required type="text" id="username" name="username" value="<%= user.username %>" >
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" value="<%= user.password %>" >
+            <input required type="text" id="password" name="password" value="<%= user.password %>" >
         </div>
 
 

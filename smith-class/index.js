@@ -7,6 +7,7 @@ import router from "./routes/routes.js";
 import ejsmate from 'ejs-mate'
 import MyError from "./utils/myError.js";
 
+
 config()
 connectDB()
 
@@ -31,7 +32,7 @@ app.all("*", (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    const {kode} = err
+    const {kode = 500} = err
     if(!err.pesan) err.pesan = "Ya error lah pokoknya"
     
     res.status(kode).render('error', {
