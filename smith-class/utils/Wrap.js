@@ -3,3 +3,10 @@ export default (fn) => {
         fn(req, res, next).catch(next)
     }
 }
+
+// buat antisipasi -> yg berulang
+// try {
+//     ...
+// } catch(err) {
+//     next(err)
+// }
