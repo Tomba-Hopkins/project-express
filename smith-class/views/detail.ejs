@@ -17,15 +17,43 @@
         </div>
     </main>
     
-    <button class="w-1/4 bg-teal-700 text-slate-100 p-2 rounded-sm my-2">Add Biodata User</button>
+    <button class="bio-btn w-1/4 bg-teal-700 text-slate-100 p-2 rounded-sm my-2">Add Biodata User</button>
 
 
-    <div class="fixed w-full h-full bg-white/30 backdrop-blur-sm flex flex-col items-center justify-center">
-        <span class="ml-36 cursor-pointer font-bold text-center text-slate-900 h-8 w-8 rounded-full border-slate-900 border-2 ">X</span>
+    <div class="kardus hidden fixed w-full h-full bg-white/30 backdrop-blur-sm flex-col items-center justify-center">
+        <span class="ml-36 cursor-pointer font-bold text-center text-slate-900 h-8 w-8 rounded-full border-slate-900 border-2 close-btn">X</span>
 
         <form class="w-1/2 p-4 flex flex-col items-center justify-center bg-slate-900 text-slate-100 m-3 rounded-md" action="/create" method="post">
-    
+            <label for="name">Name</label>
+            <input class="mb-8" type="text" id="name">
+
+            <label for="age">Age</label>
+            <input class="mb-8"  type="number" id="age">
+
+            <label for="address">Address</label>
+            <textarea class="mb-8"  name="biodata[address]" id="address"></textarea>
     
             <button class="w-1/6 bg-slate-700 p-4 rounded-md my-2" type="submit">Submit</button>
         </form>
     </div>
+
+
+
+    <script>
+        const bioBtn = document.querySelector('.bio-btn')
+        const closeBtn = document.querySelector('.close-btn')
+        const kardus = document.querySelector('.kardus')
+        bioBtn.addEventListener('click', () => {
+            kardus.classList.toggle('hidden')
+            kardus.classList.toggle('flex')
+            kardus.classList.add('animate-ping')
+
+            setTimeout(() => {
+                kardus.classList.remove('animate-ping')
+            }, 30)
+        })
+        closeBtn.addEventListener('click', () => {
+            kardus.classList.toggle('hidden')
+            kardus.classList.toggle('flex')
+        })
+    </script>
