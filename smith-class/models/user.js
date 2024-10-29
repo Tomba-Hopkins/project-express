@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Biodata from "./Biodata.js";
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -14,6 +15,21 @@ const userSchema = new mongoose.Schema({
         required: true,
         enum: [true, false]
     },
+    biodata: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Biodata'
+    }]
+})
+
+
+userSchema.post("deleteMany", async (doc) => {
+    if(doc) {
+        await Biodata.deleteMany({
+            _id: {
+                $in: doc.biodata
+            }
+        })
+    }
 })
 
 
