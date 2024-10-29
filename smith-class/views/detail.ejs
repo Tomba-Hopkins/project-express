@@ -1,6 +1,6 @@
 <%- layout('layouts/tubuh') %>
     <h2 class="my-5 mt-12 text-center text-6xl font-bold bg-gradient-to-r from-teal-300 to-slate-700 text-transparent bg-clip-text">Detail User</h2>
-    <main class="w-full p-8 flex justify-center items-center">
+    <main class="w-full p-8 flex justify-between items-center">
         <div class="card w-1/3 gap-4 mr-8 flex flex-col justify-between p-4 border-teal-400 border-2 text-slate-100">
             <p>Username: <span class="font-semibold text-teal-200 mx-2"><%= user.username %></span></p>
             <p>Password: <span class="font-semibold text-teal-200 mx-2"><%= user.password %></span></p>
@@ -13,7 +13,14 @@
 
 
         <div class="profiles w-1/2 flex gap-20 flex-row flex-wrap  p-8 ">
-            
+            <% for( let i = 0; i < user.biodata.length; i++ ) { %>
+                <div class="profile min-w-44 min-h-56 flex flex-col items-center justify-center border-teal-400 border-2 p-4">
+                    <p><%= i + 1 %></p>
+                    <p><%= user.biodata[i].name %></p>
+                    <p><%= user.biodata[i].age %></p>
+                    <p><%= user.biodata[i].address %></p>
+                </div>
+            <% } %>
         </div>
     </main>
     
@@ -23,15 +30,15 @@
     <div class="kardus hidden fixed w-full h-full bg-white/30 backdrop-blur-sm flex-col items-center justify-center">
         <span class="ml-36 cursor-pointer font-bold text-center text-slate-900 h-8 w-8 rounded-full border-slate-900 border-2 close-btn">X</span>
 
-        <form class="w-1/2 p-4 flex flex-col items-center justify-center bg-slate-900 text-slate-100 m-3 rounded-md" action="/create" method="post">
+        <form class="w-1/2 p-4 flex flex-col items-center justify-center bg-slate-900 text-slate-100 m-3 rounded-md" action="/user/<%= user._id %>/biodata" method="post">
             <label for="name">Name</label>
-            <input class="mb-8" type="text" id="name">
+            <input class="mb-8 p-2 text-slate-900" name="biodata[name]" type="text" id="name">
 
             <label for="age">Age</label>
-            <input class="mb-8"  type="number" id="age">
+            <input class="mb-8 p-2 text-slate-900" name="biodata[age]"  type="number" id="age">
 
             <label for="address">Address</label>
-            <textarea class="mb-8"  name="biodata[address]" id="address"></textarea>
+            <textarea class="mb-8 p-2 text-slate-900"  name="biodata[address]" id="address"></textarea>
     
             <button class="w-1/6 bg-slate-700 p-4 rounded-md my-2" type="submit">Submit</button>
         </form>

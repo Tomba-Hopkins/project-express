@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
 })
 
 
-userSchema.post("deleteMany", async (doc) => {
+userSchema.post("deleteMany", async function(doc) {
     if(doc) {
         await Biodata.deleteMany({
             _id: {

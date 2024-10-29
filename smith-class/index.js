@@ -7,6 +7,7 @@ import router from "./routes/routes.js";
 import ejsmate from 'ejs-mate'
 import MyError from "./utils/myError.js";
 
+
 // buat db biodata nanti
 config()
 connectDB()

@@ -1,3 +1,4 @@
+import Biodata from "../models/Biodata.js"
 import User from "../models/user.js"
 import Wrap from "../utils/Wrap.js"
 
@@ -16,7 +17,7 @@ export const getCreateUser =  Wrap((req, res) => {
 
 export const getUserById = Wrap(async(req, res) => {
     const { id } = req.params
-    const user = await User.findById(id)
+    const user = await User.findById(id).populate('biodata')
     res.render('detail', {
         user
     })
@@ -58,4 +59,16 @@ export const createUser = Wrap(async(req, res) => {
     })
     await user.save()
     res.redirect('/')
+})
+
+
+export const createBiodata = Wrap(async(req, res) => {
+    const biodata = new Biodata(req.body.biodata)
+    const user = await User.findById(req.params.id)
+
+    user.biodata.push(biodata)
+    await biodata.save()
+    await user.save()
+    res.redirect('/user/'+ req.params.id)
+
 })

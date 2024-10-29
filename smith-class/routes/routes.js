@@ -8,7 +8,8 @@ import {
     getUserById,
     editUserById,
     deleteUserById,
-    getEditUserPage
+    getEditUserPage,
+    createBiodata
 
  } from "../controller/user.js";
 
@@ -28,6 +29,8 @@ router.delete('/user/:id', deleteUserById)
 router.get('/user/:id/update', getEditUserPage)
 
 router.post('/create', createUser)
+
+router.post('/user/:id/biodata', createBiodata)
 
 
 export default router
