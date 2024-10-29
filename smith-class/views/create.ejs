@@ -1,18 +1,20 @@
 <% layout('layouts/tubuh') %>
-    <h1>Create User</h1>
-    <form action="/create" method="post">
-        <div>
+    <h1 class="my-5 mt-12 text-center text-6xl font-bold bg-gradient-to-r from-teal-300 to-slate-700 text-transparent bg-clip-text ">Create User</h1>
+
+    
+    <form class="w-full p-8 flex flex-col items-center justify-center bg-gradient-to-r from-teal-500 to-slate-800 text-slate-100 m-3" action="/create" method="post">
+        <div class="flex flex-col w-1/4 items-center justify-center bg-slate-700 rounded-md p-2 py-4 my-6">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+            <input class="text-slate-700" type="text" id="username" name="username" required>
         </div>
-        <div>
+        <div class="flex flex-col w-1/4 items-center justify-center bg-slate-700 rounded-md p-2 py-4 my-6">
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" required>
+            <input class="text-slate-700" type="text" id="password" name="password" required>
         </div>
 
-        <div>     
+        <div class="flex flex-col w-1/4 items-center justify-center bg-slate-700 rounded-md p-2 py-4 my-6">     
             <label for="is_admin">Is Admin</label>
-            <select name="is_admin" id="is_admin" required>
+            <select class="w-1/2 text-slate-700 p-4 rounded-md my-2" name="is_admin" id="is_admin" required>
                 <option value="">Select</option>
                 <option value="true">True</option>
                 <option value="false">False</option>
@@ -20,5 +22,5 @@
         </div>
 
 
-        <button type="submit">Submit</button>
+        <button class="w-1/6 bg-slate-700 p-4 rounded-md my-2" type="submit">Submit</button>
     </form>

@@ -1,9 +1,12 @@
 <%- layout('layouts/tubuh') %>
-    <h2>Detail User</h2>
-    <p>Username: <%= user.username %></p>
-    <p>Password: <%= user.password %></p>
-    <p>Is Admin: <%= user.is_admin %></p>
-    <a href="/user/<%= user._id %>/update">Edit</a>
-    <form action="/user/<%= user._id %>?_metode=DELETE" method="post">
-        <button type="submit">Delete User</button>
-    </form>
+    <h2 class="my-5 mt-12 text-center text-6xl font-bold bg-gradient-to-r from-teal-300 to-slate-700 text-transparent bg-clip-text">Detail User</h2>
+    <div class="card w-1/6 flex flex-col justify-center p-4 border-teal-400 border-2 text-slate-100">
+        <p>Username: <span class="font-semibold text-teal-200 mx-2"><%= user.username %></span></p>
+        <p>Password: <span class="font-semibold text-teal-200 mx-2"><%= user.password %></span></p>
+        <p>Is Admin: <span class="font-semibold text-teal-200 mx-2"><%= user.is_admin %></span></p>
+        <a class="w-1/4 bg-teal-700 p-2 rounded-sm my-2" href="/user/<%= user._id %>/update">Edit</a>
+        <form action="/user/<%= user._id %>?_metode=DELETE" method="post">
+            <button class="w-1/2 bg-red-700 p-2 rounded-sm my-2" type="submit">Delete User</button>
+        </form>
+    </div>
+    
