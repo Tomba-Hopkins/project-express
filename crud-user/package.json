@@ -1,5 +1,5 @@
 {
-  "name": "smith-class",
+  "name": "crud-user",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
