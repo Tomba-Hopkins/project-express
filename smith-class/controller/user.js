@@ -72,3 +72,17 @@ export const createBiodata = Wrap(async(req, res) => {
     res.redirect('/user/'+ req.params.id)
 
 })
+
+
+export const deleteBiodata = Wrap(async(req, res) => {
+    const {user_id, biodata_id} = req.params
+
+    await User.findByIdAndUpdate(user_id, {
+        $pull: {
+            biodata: biodata_id
+        }
+    })
+
+    await Biodata.findByIdAndDelete(biodata_id)
+    res.redirect('/user/'+ user_id)
+})
