@@ -41,7 +41,7 @@ app.use(flash())
 // middleware buat flash
 app.use((req, res, next) => {
     res.locals.berhasil = req.flash('succ')
-    res.locals.gagal = req.flash('succ')
+    res.locals.gagal = req.flash('err')
     next()
 })
 
