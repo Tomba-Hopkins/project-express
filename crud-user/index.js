@@ -26,6 +26,7 @@ app.use('/', router)
 
 // statis buat tailwind
 app.use(express.static(path.join(import.meta.dirname, 'src')))
+app.use(express.static(path.join(import.meta.dirname, 'public')))
 
 
 app.all("*", (req, res, next) => {
@@ -36,7 +37,7 @@ app.use((err, req, res, next) => {
     const {kode = 500} = err
     if(!err.pesan) err.pesan = "Ya error lah pokoknya"
     
-    res.status(kode).render('error', {
+    return res.status(kode).render('error', {
         err
     })
 })
