@@ -4,6 +4,8 @@ import * as path from 'path'
 import methodovr from 'method-override'
 import connectDB from './config/db.js'
 import router from "./routes/routes.js";
+import userRouter from "./routes/userRoute.js"
+import biodataRoute from "./routes/biodataRoute.js"
 import ejsmate from 'ejs-mate'
 import MyError from "./utils/myError.js";
 
@@ -22,7 +24,11 @@ app.engine('ejs', ejsmate)
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodovr('_metode'))
+
+
 app.use('/', router)
+app.use('/user', userRouter)
+app.use('/user/:user_id/biodata', biodataRoute)
 
 // statis buat tailwind
 app.use(express.static(path.join(import.meta.dirname, 'src')))
