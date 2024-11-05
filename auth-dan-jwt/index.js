@@ -2,15 +2,21 @@ import { config } from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import * as path from 'path'
+import ejsmate from 'ejs-mate'
 config()
-mongoose.connect(process.env.MONGO, () => console.log('DB Connected'))
-
+mongoose.connect(process.env.MONGO)
+.then(() => console.log(`DB Connected`))
+.catch((err) => console.log(err))
 
 
 const app = express()
-app.use('view engine', 'ejs')
-app.use('views', path.join(import.meta.dirname, 'views'))
+app.set('view engine', 'ejs')
+app.set('views', path.join(import.meta.dirname, 'views'))
+
+
 app.use(express.static(path.join(import.meta.dirname, 'public')))
+
+app.engine('ejs', ejsmate)
 
 
 
