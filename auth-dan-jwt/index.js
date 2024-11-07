@@ -3,6 +3,11 @@ import express from "express";
 import mongoose from "mongoose";
 import * as path from 'path'
 import ejsmate from 'ejs-mate'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+
+import User from "./models/User.js";
+
 config()
 mongoose.connect(process.env.MONGO)
 .then(() => console.log(`DB Connected`))
@@ -28,6 +33,16 @@ app.get('/login', (req, res) => {
 })
 app.get('/register', (req, res) => {
     res.render('register')
+})
+
+app.post('/register', async(req, res) => {
+    const {username, password} = req.body
+    const hashedPw = await bcrypt.hash(password, 10)
+    const user = new User({username, password: hashedPw})
+    await user.save()
+    res.status(201).json({
+        message: 'Dah daftar noh'
+    })
 })
 
 
