@@ -6,17 +6,35 @@ import ejsmate from 'ejs-mate'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-import User from "./models/User.js";
-
 config()
 mongoose.connect(process.env.MONGO)
 .then(() => console.log(`DB Connected`))
 .catch((err) => console.log(err))
 
+const Schema = mongoose.Schema
+
+const userSchema = new Schema({
+    username: {
+        type: String,
+        min: 3,
+        unique: true,
+        required: true
+    },
+    password: {
+        type: String,
+        min: 3,
+        required: true
+    },
+})
+
+
+const User = mongoose.model('User', userSchema)
+
 
 const app = express()
 app.set('view engine', 'ejs')
 app.set('views', path.join(import.meta.dirname, 'views'))
+app.use(express.urlencoded({extended: true}))
 
 
 app.use(express.static(path.join(import.meta.dirname, 'public')))
@@ -24,8 +42,11 @@ app.use(express.static(path.join(import.meta.dirname, 'public')))
 app.engine('ejs', ejsmate)
 
 
-
 app.get('/', (req, res) => {
+    res.render('dashboard')
+})
+
+app.get('/profile', (req, res) => {
     res.render('profile')
 })
 app.get('/login', (req, res) => {
@@ -36,13 +57,29 @@ app.get('/register', (req, res) => {
 })
 
 app.post('/register', async(req, res) => {
+    try {
+        const {username, password} = req.body
+        const hashedPw = await bcrypt.hash(password, 10)
+        const user = new User({username, password: hashedPw})
+        await user.save()
+        res.status(201).redirect('/login') // harus pilih 1 jir mau json atau redirect
+        
+    } catch (err) {
+        res.status(500).redirect('/register')
+    }
+})
+
+
+app.post('/login', async(req, res) => {
     const {username, password} = req.body
-    const hashedPw = await bcrypt.hash(password, 10)
-    const user = new User({username, password: hashedPw})
-    await user.save()
-    res.status(201).json({
-        message: 'Dah daftar noh'
-    })
+    const user = await User.findOne({username: username})
+
+    if(!user || !bcrypt.compare(password, user.password)){
+        res.status(404).redirect('/login')
+    }
+
+
+    res.status(200).redirect('/profile')
 })
 
 
