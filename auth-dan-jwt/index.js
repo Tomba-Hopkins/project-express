@@ -5,6 +5,7 @@ import * as path from 'path'
 import ejsmate from 'ejs-mate'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import cookieParser from "cookie-parser";
 
 config()
 mongoose.connect(process.env.MONGO)
@@ -35,6 +36,7 @@ const app = express()
 app.set('view engine', 'ejs')
 app.set('views', path.join(import.meta.dirname, 'views'))
 app.use(express.urlencoded({extended: true}))
+app.use(cookieParser())
 
 
 app.use(express.static(path.join(import.meta.dirname, 'public')))
@@ -46,9 +48,7 @@ app.get('/', (req, res) => {
     res.render('dashboard')
 })
 
-app.get('/profile', (req, res) => {
-    res.render('profile')
-})
+
 app.get('/login', (req, res) => {
     res.render('login')
 })
@@ -79,7 +79,30 @@ app.post('/login', async(req, res) => {
     }
 
 
+    const token = jwt.sign({username: user.username}, process.env.JWT, {expiresIn: '1h'})
+    res.cookie('trackingID', token, {httpOnly: true})
+
+
     res.status(200).redirect('/profile')
+})
+
+
+const verifyToken = (req, res, next) => {
+    const {trackingID} = req.cookies
+    
+    if(!trackingID) return res.redirect('/login')
+    
+    jwt.verify(trackingID, process.env.JWT, (err, decode) => {
+        if(err) return res.redirect('/login')
+        req.pengguna = decode
+        next()
+    })
+}
+
+app.get('/profile',verifyToken, (req, res) => {
+    res.render('profile', {
+        uname: req.pengguna.username
+    })
 })
 
 
