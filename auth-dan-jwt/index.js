@@ -80,7 +80,7 @@ app.post('/login', async(req, res) => {
 
 
     const token = jwt.sign({username: user.username}, process.env.JWT, {expiresIn: '1h'})
-    res.cookie('trackingID', token, {httpOnly: true})
+    res.cookie('trackingID', token)
 
 
     res.status(200).redirect('/profile')
@@ -99,12 +99,21 @@ const verifyToken = (req, res, next) => {
     })
 }
 
+
 app.get('/profile',verifyToken, (req, res) => {
     res.render('profile', {
-        uname: req.pengguna.username
+        uname: req.pengguna.username,
+        comment: ''
     })
 })
 
+app.post('/comment',verifyToken, (req, res) => {
+    const {comment} = req.body
+    res.render('profile', {
+        uname: req.pengguna.username,
+        comment: comment
+    })
+})
 
 
 const port = process.env.PORT || 5000
