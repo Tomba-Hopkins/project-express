@@ -1,7 +1,7 @@
 <% layout('layouts/body') %>
-<h1>Login Page</h1>
+<h1>Register Page</h1>
 
-<form action="/login" method="post">
+<form action="/register" method="post">
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
     <label for="password">Password</label>
@@ -10,6 +10,5 @@
         <input type="checkbox" id="show_passwd">
         <small>show password</small>
     </label>
-    <small>Dont have any accounts? register in <a href="/register">here</a></small>
-    <button type="submit">Login</button>
+    <button type="submit">Register</button>
 </form>
