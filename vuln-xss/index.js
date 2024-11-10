@@ -4,6 +4,8 @@ import express from "express";
 import * as path from 'path'
 import ejsmate from 'ejs-mate'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import cookieParser from "cookie-parser";
 
 config()
 
@@ -36,6 +38,27 @@ app.set('view engine', 'ejs')
 app.engine('ejs', ejsmate)
 
 app.use(express.urlencoded({extended: true}))
+app.use(cookieParser())
+
+app.use((req, res, next) => {
+    res.removeHeader("Content-Security-Policy");
+    next();
+});
+
+
+
+// middleware
+const verifyCookie = (req, res, next) => {
+    const {nastar_cookie} = req.cookies
+    if(!nastar_cookie) return res.redirect('/')
+    
+    jwt.verify(nastar_cookie, process.env.JWT, (err, decode) => {
+        if(err) return res.redirect('/')
+        req.user = decode
+        next()
+    })
+}
+
 
 
 app.get('/', (req, res) => {
@@ -55,8 +78,27 @@ app.post('/register', async(req, res) => {
 })
 
 
-app.get('/profile', (req, res) => {
-    res.render('profile')
+app.post('/login', async(req, res) => {
+    const {username, password} = req.body
+    const user = await User.findOne({username})
+
+    if(!user || !bcrypt.compare(password, user.password)) return res.status(404).redirect('/')
+
+    const token = jwt.sign({username}, process.env.JWT, {expiresIn: '1h'})
+    res.cookie('nastar_cookie', token)
+    
+    res.status(200).redirect('/profile')
+})
+
+
+app.get('/profile', verifyCookie, (req, res) => {
+
+    let quot = req.query.quote || ""
+    
+    res.render('profile', {
+        username: req.user.username,
+        quot
+    })
 })
 
 

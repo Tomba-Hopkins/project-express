@@ -1,0 +1,12 @@
+<% layout('layouts/body') %>
+<h1>Profile Page</h1>
+<p>Hello <%= username %></p>
+
+
+<form action="/profile" method="get">
+    <label for="quote">Quotes for today</label>
+    <input type="text" id="quote" name="quote">
+    <button>Send</button>
+</form>
+
+<p><%- quot %></p>
