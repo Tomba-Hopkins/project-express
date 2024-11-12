@@ -5,13 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project</title>
     <style>
-        body, form {
-            display: flex;
+        :root {
+            --gelap: #2B2E4A;
+            --cerah: #F5F7F8;
+            --primary: #F4CE14;
+        }
+        body {
+            background-color: var(--gelap);
+            color: var(--cerah);
             height: 100vh;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            
+        }
+        form, body {
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
+        }
+        form {
+            border: 0.1rem solid var(--primary);
+            padding: 1rem 3rem;
+            border-radius: 0.2rem;
+            gap: 1rem;
+        }
+        button {
+            background-color: var(--cerah);
+            color: var(--gelap);
+            padding: 0.2rem 1.2rem;
+            transition: all ease 0.3s;
+            border-radius: 0.2rem;
+        }
+        button:hover {
+            background-color: var(--primary);
+            
+        }
+
+        a {
+            color: var(--primary);
         }
     </style>
 </head>

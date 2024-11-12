@@ -1,11 +1,5 @@
-<h1>Hello <%- uname %></h1>
-<form action="/comment" method="post">
-    <label for="comment">Comment</label>
-    <input type="text" name="comment" id="comment">
-    <button>Add Comment</button>
-</form>
+<% layout('partials/full') %>
 
+<h1>Hello <%= uname %></h1>
 
-<% if (comment) { %>
- <p><%- comment %></p>
-<% } %>
+<a href="/buat-soal">Buat soal</a>

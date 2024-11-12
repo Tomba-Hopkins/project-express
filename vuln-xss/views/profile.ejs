@@ -3,10 +3,15 @@
 <p>Hello <%= username %></p>
 
 
-<form action="/profile" method="get">
+<form action="/quotes" method="post">
     <label for="quote">Quotes for today</label>
     <input type="text" id="quote" name="quote">
     <button>Send</button>
 </form>
 
-<p><%- quot %></p>
+
+<ul>
+    <% for( const quote of quotes ) { %>
+        <li><%- quote.author %> - <%- quote.quote %></li>
+    <% } %>
+</ul>

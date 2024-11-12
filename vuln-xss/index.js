@@ -28,7 +28,19 @@ const userSchema = new Schema({
     }
 })
 
+const quotesSchema = new Schema({
+    author: {
+        type: String,
+        required: true
+    },
+    quote: {
+        type: String,
+        required: true
+    }
+})
+
 const User = mongoose.model('User', userSchema)
+const Quote = mongoose.model('Quote', quotesSchema)
 
 
 const app = express()
@@ -39,12 +51,6 @@ app.engine('ejs', ejsmate)
 
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
-
-app.use((req, res, next) => {
-    res.removeHeader("Content-Security-Policy");
-    next();
-});
-
 
 
 // middleware
@@ -91,16 +97,32 @@ app.post('/login', async(req, res) => {
 })
 
 
-app.get('/profile', verifyCookie, (req, res) => {
 
-    let quot = req.query.quote || ""
+app.get('/profile', verifyCookie, async (req, res) => {
+
+    const quotes = await Quote.find({})
     
     res.render('profile', {
         username: req.user.username,
-        quot
+        quotes
     })
 })
 
+
+app.post('/quotes',verifyCookie, async(req, res) => {
+
+    const {quote} = req.body
+    const {username} = req.user
+    
+    
+    const newQuote = new Quote({
+        author: username,
+        quote,
+    })
+
+    await newQuote.save()
+    res.status(201).redirect('/profile')
+})
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Started on http://localhost:${port}`))
