@@ -4,12 +4,14 @@ import Home from "../views/Home";
 import Login from "../views/Login";
 
 
-const AppRoutes = () => {
+function AppRoutes() {
     return (
-        <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/login" element={<Login/>} />
-        </Routes>
+        <main className="h-full mt-32 flex flex-col items-center p-10 min-h-screen bg-slate-900">
+            <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/login" element={<Login/>} />
+            </Routes>
+        </main>
     )
 }
 
