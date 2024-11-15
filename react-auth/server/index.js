@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { config } from "dotenv";
 import bcrypt from 'bcrypt'
+import cors from 'cors'
 config()
 
 mongoose.connect(process.env.MONGO)
@@ -29,11 +30,15 @@ const PORT = process.env.PORT || 5000
 
 // middleware
 app.use(express.json()) // biar ngirimnya pake json bukan urlencoded form
+app.use(cors({
+    origin: '*'
+}))
 
 
 
 app.post('/api/register', async (req, res) => {
     const {username, password} = req.body
+    console.log(username, password)
     const hashPasswd = await bcrypt.hash(password, 10)
     const user = new User({
         username,

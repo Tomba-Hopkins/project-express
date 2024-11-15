@@ -1,8 +1,11 @@
-function Login(){
+/* eslint-disable react/prop-types */
+function Login({msg}){
     return(
         <>
             <h1 className="text-3xl">Login Page</h1>
-
+            {msg ? (
+                <p className="text-green-400">{msg}</p>
+            ) : ''}
             <form className="w-1/2 h-72 flex flex-col items-center justify-center gap-4 border-2 border-blue-500 p-8 m-8 rounded-sm">
       
                     <label htmlFor="username">Username</label>
