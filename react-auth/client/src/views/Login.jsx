@@ -1,16 +1,25 @@
 import { useState } from "react"
-import AxiosInstance from "../utils/AxiosInstance"
+import {useNavigate} from 'react-router-dom'
+
+import axios from 'axios'
+axios.defaults.withCredentials = true
+
 
 /* eslint-disable react/prop-types */
 function Login({msg}){
 
-
+    const navigate = useNavigate()
+  
+  
     const [data, setData] = useState({
         username: "",
         password: ""
     })
-
-
+  
+    const [showPasswd, setShowPasswd] = useState(false)
+  
+  
+  
     const setUsername = (e) => {
         setData({
             ...data,
@@ -23,21 +32,26 @@ function Login({msg}){
             password: e.target.value
         })
     }
-
+  
     const submitForm = async (e) => {
         e.preventDefault()
-
+  
         
         try {
-            const res = await AxiosInstance.post('/login', data)
-            console.log(res.data)
+            const res = await axios.post('http://localhost:5000/api/login', data)
+            if(res.data.redirect) {
+                navigate(res.data.redirect)
+            }
             
         } catch (error) {
-            console.log(error)
-            console.log('Redirect aja sana')
+            alert('Wrong credentials', error)
         }
         
     }
+  
+    const toggleShowPasswd = () => {
+      setShowPasswd(!showPasswd)
+  }
     
     
     
@@ -54,16 +68,16 @@ function Login({msg}){
                     <input onChange={setUsername} className="focus:outline-sky-500 p-1 text-center text-slate-900" type="text" id="username" />
       
                     <label htmlFor="password">Password</label>
-                    <input onChange={setPassword} className="focus:outline-sky-500 p-1 text-center text-slate-900" type="text" id="password" />
+                    <input onChange={setPassword} className="focus:outline-sky-500 p-1 text-center text-slate-900" type={showPasswd ? 'text' : 'password'} id="password" />
                     <div>
-                        <input className="mr-4" type="checkbox" id="cek" />
+                        <input onChange={toggleShowPasswd} className="mr-4" type="checkbox" id="cek" />
                         <label htmlFor="cek">show password</label>
                     </div>
                 <button className="w-1/4 rounded-sm border-2 p-1 border-sky-500 hover:bg-blue-500 duration-150 active:animate-ping">Login</button>
             </form>
         </>
     )
-}
+  }
 
 
 export default Login
