@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 axios.defaults.withCredentials = true
 
-function Dashboard(){
+function Dashboard({msg}){
     const navigate = useNavigate()
 
     const [username, setUsername] = useState("")
@@ -17,7 +18,7 @@ function Dashboard(){
                     withCredentials: true
                 })
                 setUsername(result.data.username)
-                console.log(result.data)
+                // console.log(result.data)
             } catch (err) {
                 navigate('/login')
                 console.log(err)
@@ -50,6 +51,9 @@ function Dashboard(){
     return(
         <>
             <h1>Hello {username ? username : 'Stranger'}</h1>
+            {msg ? (
+                <p className="text-green-400">{msg}</p>
+            ) : ''}
             <section className="h-full w-1/4 p-10 flex flex-col self-end gap-4 border-l-2 border-l-blue-500">
                 <button className=" w-24 h-24 rounded-full border-2 p-1 border-sky-500 hover:bg-blue-500 duration-150 active:animate-ping" onClick={loggoutHandler}>Logout</button>
                 <button className=" w-24 h-24 rounded-full border-2 p-1 border-sky-500 hover:bg-blue-500 duration-150 active:animate-ping" onClick={bookPage}>Add Book</button>

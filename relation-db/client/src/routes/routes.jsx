@@ -18,8 +18,8 @@ function AppRoutes() {
                 <Route path="/" element={<Home/>} />
                 <Route path="/login" element={<Login msg={msg}/>} />
                 <Route path="/register" element={<Register setMessage={setMessage} />} />
-                <Route path="/dashboard" element={<Dashboard/>} />
-                <Route path="/create-book" element={<CreateBook/>} />
+                <Route path="/dashboard" element={<Dashboard msg={msg} />} />
+                <Route path="/create-book" element={<CreateBook setMessage={setMessage}/>} />
             </Routes>
         </main>
     )
