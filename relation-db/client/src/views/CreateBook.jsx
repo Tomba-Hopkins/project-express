@@ -12,7 +12,6 @@ export default function CreateBook({setMessage}){
     const [data, setData] = useState({
         title: "",
         content: "",
-        author: ""
     })
 
     useEffect(() => {
@@ -51,22 +50,25 @@ export default function CreateBook({setMessage}){
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        setData({
-            ...data,
-            author: username
-        })
-
-        try {
-            const result = await axios.post(`http://localhost:5000/api/create-book/${user_id}`, data)
-            setMessage(result.data.message)
-            navigate(result.data.redirect)
-            
-        } catch (err) {
-            console.log(err)
-            navigate('/create-book')
+        if(username){
+            const finalData = {
+                ...data,
+                author: username
+            }
+            try {
+                const result = await axios.post(`http://localhost:5000/api/create-book/${user_id}`, finalData)
+                setMessage(result.data.message)
+                navigate(result.data.redirect)
+                
+            } catch (err) {
+                console.log(err)
+                navigate('/create-book')
+            }
         }
         
     }
+
+    console.log(data)
     
     
     

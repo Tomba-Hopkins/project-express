@@ -22,5 +22,13 @@ const createBook = async(req, res) => {
     })
 }
 
+const getBooks = async (req, res) => {
+    const {user_id} = req.params
+    const user = await User.findById(user_id).populate('books')
+    
+    res.status(200).json({
+        books: user.books
+    })
+}
 
-export {createBook}
+export {createBook, getBooks}
