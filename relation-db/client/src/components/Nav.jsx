@@ -9,7 +9,7 @@ function Nav(){
             <Link className="hover:text-sky-500"  to="/login" >Login</Link>
             <Link className="hover:text-sky-500" to="/register">Register</Link>
             <Link className="hover:text-sky-500" to="/library">Library</Link>
-            <Link className="hover:text-sky-500" to="/dashboard">Logout</Link>
+            <Link className="hover:text-sky-500" to="/dashboard">Dashboard</Link>
         </nav>
     )
 }

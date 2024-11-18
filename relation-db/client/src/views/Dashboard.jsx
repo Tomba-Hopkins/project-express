@@ -71,6 +71,13 @@ function Dashboard({msg}){
         navigate('/library')
     }
 
+    const detailMyBook = (id) => {
+        try {
+            navigate(`/books/${id}`)
+        } catch (err) {
+            console.log(err)
+        }
+    }
     
     
     return(
@@ -92,7 +99,7 @@ function Dashboard({msg}){
                         <div key={index} className="border-l-2 justify-center items-center gap-8 border-l-blue-500 min-h-24 flex w-1/2 mx-auto text-lg">
                             <p className="mx-auto">Title: {book.title}</p>
                             <p className="mx-auto">Author: {book.author}</p>
-                            <button className="ml-auto mr-4 rounded-md border-2 p-4 border-sky-500 hover:bg-blue-500 duration-150 active:animate-ping">Read</button>
+                            <button onClick={() => detailMyBook(book._id)} className="ml-auto mr-4 rounded-md border-2 p-4 border-sky-500 hover:bg-blue-500 duration-150 active:animate-ping">Read</button>
                         </div>
                     ))
                 ) : 'Loading......'}
