@@ -6,6 +6,8 @@ import Register from "../views/Register";
 import Dashboard from "../views/Dashboard";
 import { useState } from "react";
 import CreateBook from "../views/CreateBook";
+import Library from "../views/Library";
+import DetailBook from "../views/DetailBook";
 
 
 function AppRoutes() {
@@ -20,6 +22,8 @@ function AppRoutes() {
                 <Route path="/register" element={<Register setMessage={setMessage} />} />
                 <Route path="/dashboard" element={<Dashboard msg={msg} />} />
                 <Route path="/create-book" element={<CreateBook setMessage={setMessage}/>} />
+                <Route path="/library" element={<Library/>} />
+                <Route path="/books/:book_id" element={<DetailBook/>} />
             </Routes>
         </main>
     )

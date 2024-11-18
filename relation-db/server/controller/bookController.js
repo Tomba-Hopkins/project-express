@@ -31,4 +31,14 @@ const getBooks = async (req, res) => {
     })
 }
 
-export {createBook, getBooks}
+
+const getAllBooks = async(req, res) => {
+    const books = await Book.find()
+    res.status(200).json({
+        message: 'All Books already to read',
+        status: 200,
+        books
+    })
+}
+
+export {createBook, getBooks, getAllBooks}
