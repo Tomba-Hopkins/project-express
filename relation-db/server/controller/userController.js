@@ -53,7 +53,7 @@ const login = async(req, res) => {
 const authCheck = async(req, res) => {
     res.status(200).json({
         user_id: req.useroi._id,
-        username: req.useroi.username
+        username: req.useroi.username,
     })
 }
 

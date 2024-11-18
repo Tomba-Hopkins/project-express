@@ -20,14 +20,14 @@ router.get('/books/:user_id', verifyToken, getBooks)
 router.get('/library', verifyToken, getAllBooks)
 
 
-// router.get('/books/:book_id', async(req, res) => {
-//     const {book_id} = req.params
-//     const book = await Book.findById(book_id)
-//     res.status(200).json({
-//         message: 'Book already to read',
-//         status: 200,
-//         book
-//     })
-// })
+router.get('/books/detail/:book_id', async(req, res) => {
+    const {book_id} = req.params
+    const book = await Book.findById(book_id)
+    res.status(200).json({
+        message: 'Book already to read',
+        status: 200,
+        book
+    })
+})
 
 export default router
