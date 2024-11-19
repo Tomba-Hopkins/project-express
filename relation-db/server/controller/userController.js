@@ -33,7 +33,7 @@ const login = async(req, res) => {
     })
 
 
-    const token = jwt.sign({username, _id: user._id}, process.env.JWT, {
+    const token = jwt.sign({username, _id: user._id, message: 'Login success'}, process.env.JWT, {
         expiresIn: '1h',
     })
 
@@ -42,8 +42,9 @@ const login = async(req, res) => {
     })
 
 
+    // req.flash('flash_messages', 'Login Successful')
     res.status(200).json({
-        message: 'Login success',
+        message: 'Ready for teleport?',
         status: 200,
         redirect: '/dashboard'
     })

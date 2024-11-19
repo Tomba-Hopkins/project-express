@@ -21,6 +21,8 @@ function Dashboard({msg}){
                 })
                 setUsername(result.data.username)
                 setUserId(result.data.user_id)
+
+                console.log(result)
             } catch (err) {
                 navigate('/login')
                 console.log(err)

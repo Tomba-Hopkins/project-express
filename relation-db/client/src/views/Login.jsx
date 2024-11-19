@@ -16,6 +16,7 @@ function Login({msg}){
     })
   
     const [showPasswd, setShowPasswd] = useState(false)
+    const [resMsg, setResMsg] = useState("")
   
   
   
@@ -38,8 +39,11 @@ function Login({msg}){
         
         try {
             const res = await axios.post('http://localhost:5000/api/login', data)
+            setResMsg(res.data.message)
             if(res.data.redirect) {
-                navigate(res.data.redirect)
+                setTimeout(() => {
+                    navigate(res.data.redirect)
+                }, 3000)
             }
             
         } catch (error) {
@@ -57,7 +61,11 @@ function Login({msg}){
     
     return(
         <>
+            {resMsg ? (
+                    <p className="text-green-400 text-2xl font-bold animate-ping">{resMsg}</p>
+                ) : ''}
             <h1 className="text-3xl">Login Page</h1>
+            
             {msg ? (
                 <p className="text-green-400">{msg}</p>
             ) : ''}

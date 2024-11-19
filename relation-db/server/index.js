@@ -4,6 +4,8 @@ import { config } from "dotenv";
 
 import cors from 'cors'
 import cookieParser from "cookie-parser";
+import session from "express-session";
+import flash from 'connect-flash'
 
 import router from "./routers/routes.js";
 config()
@@ -24,11 +26,20 @@ app.use(cors({
     credentials: true
 }))
 app.use(cookieParser())
-
-
 app.use('/api', router)
 
 
+
+// session
+app.use(session({
+    secret: 'rahasia',
+    resave: false,
+    saveUninitialized: false
+}))
+app.use(flash())
+app.use((req, res, next) => {
+    res.locals.flash_messages = flash('flash_messages')
+}) // gajadi jir terlalu ribet ternyata kalau di react ga kayak ejs hhhhh
 
 
 
