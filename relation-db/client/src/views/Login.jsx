@@ -35,15 +35,13 @@ function Login({msg}){
   
     const submitForm = async (e) => {
         e.preventDefault()
-  
-        
         try {
             const res = await axios.post('http://localhost:5000/api/login', data)
             setResMsg(res.data.message)
             if(res.data.redirect) {
                 setTimeout(() => {
                     navigate(res.data.redirect)
-                }, 3000)
+                }, 1000)
             }
             
         } catch (error) {
@@ -57,12 +55,14 @@ function Login({msg}){
   }
     
     
-    
-    
+
     return(
         <>
             {resMsg ? (
-                    <p className="text-green-400 text-2xl font-bold animate-ping">{resMsg}</p>
+                    <section className="flex flex-col gap-4 items-center my-8">
+                        <div className="w-16 h-16 border-l-2 border-t-2 border-blue-500 font-bold animate-spin rounded-full"></div>
+                        <span className="bg-gradient-to-r from-blue-500 to-slate-300 bg-clip-text text-transparent animate-teleport">{resMsg}</span>
+                    </section>
                 ) : ''}
             <h1 className="text-3xl">Login Page</h1>
             

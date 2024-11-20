@@ -38,7 +38,8 @@ const login = async(req, res) => {
     })
 
     res.cookie('kuki', token, {
-        httpOnly: true
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7
     })
 
 

@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{jsx,js,html,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        teleport: {
+          '100%':{
+            transform: 'scaleX(1.5)'
+          }
+        }
+      },
+      animation: {
+        teleport: 'teleport 0.5s infinite ease'
+      }
+    },
   },
   plugins: [],
 }
