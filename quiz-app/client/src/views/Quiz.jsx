@@ -60,71 +60,79 @@ export default function Quiz() {
 
   return (
     <>
-      <h1>Quiz Page</h1>
-      <p>Create Quiz in here</p>
+      <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-700 bg-clip-text text-transparent">
+        Quiz Page
+      </h1>
+      <p className="bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
+        Create Quiz in here
+      </p>
 
       <form
         onSubmit={addQuestionHandle}
         className="flex flex-col gap-8 items-center"
       >
-        <div>
+        <div className="flex gap-8 justify-center items-center m-8 p-8">
           <label htmlFor="quiz">Add ur question in here</label>
-          <input
+          <textarea
             onChange={questionHandle}
             type="text"
             id="quiz"
-            className="text-slate-900 p-2"
+            className="text-slate-900 p-1 text-center rounded-md active:outline-2 outline-indigo-500"
             value={quiz.question}
             required
-          />
+            rows="5"
+            cols="30"
+          ></textarea>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <section>
+        <div className="flex flex-col gap-8">
+          <section className="flex gap-8">
             <label htmlFor="a">A.</label>
             <input
               onChange={aHandle}
-              className="text-slate-900 p-2"
+              className="text-slate-900 p-2 text-center rounded-md active:outline-2 outline-indigo-500"
               type="text"
               id="a"
               value={quiz.a}
               required
             />
           </section>
-          <section>
+          <section className="flex gap-8">
             <label htmlFor="b">B.</label>
             <input
               onChange={bHandle}
-              className="text-slate-900 p-2"
+              className="text-slate-900 p-2 text-center rounded-md active:outline-2 outline-indigo-500"
               type="text"
               id="b"
               value={quiz.b}
               required
             />
           </section>
-          <section>
+          <section className="flex gap-8">
             <label htmlFor="c">C.</label>
             <input
               onChange={cHandle}
-              className="text-slate-900 p-2"
+              className="text-slate-900 p-2 text-center rounded-md active:outline-2 outline-indigo-500"
               type="text"
               id="c"
               value={quiz.c}
               required
             />
           </section>
-          <section>
+          <section className="flex gap-8">
             <label htmlFor="d">D.</label>
             <input
               onChange={dHandle}
-              className="text-slate-900 p-2"
+              className="text-slate-900 p-2 text-center rounded-md active:outline-2 outline-indigo-500"
               type="text"
               id="d"
               value={quiz.d}
               required
             />
           </section>
-          <button>Add</button>
+          <button className="w-1/2 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100">
+            Add
+          </button>
         </div>
       </form>
 
@@ -183,7 +191,7 @@ export default function Quiz() {
         )}
       </section>
 
-      <button className="w-1/4 border-2 border-indigo-500 m-8 ">
+      <button className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100">
         Create Quiz
       </button>
     </>
