@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "question": "Apa warna langit",
+    "answer": {
+      "a": "A. Biru",
+      "b": "B. Merah",
+      "c": "C. Kuning",
+      "d": "D. Ijo"
+    },
+    "correct": "a"
+  },
+  {
+    "id": 2,
+    "question": "Apa warna matahari",
+    "answer": {
+      "a": "A. Biru",
+      "b": "B. Kuning",
+      "c": "C. Kuning",
+      "d": "D. Ijo"
+    },
+    "correct": "b"
+  },
+  {
+    "id": 3,
+    "question": "Apa warna api",
+    "answer": {
+      "a": "A. Biru",
+      "b": "B. Merah",
+      "c": "C. Kanjuy",
+      "d": "D. Ijo"
+    },
+    "correct": "b"
+  },
+  {
+    "id": 4,
+    "question": "Apa warna Daun",
+    "answer": {
+      "a": "A. Biru",
+      "b": "B. Merah",
+      "c": "C. Kuning",
+      "d": "D. Ijo"
+    },
+    "correct": "d"
+  },
+  {
+    "id": 5,
+    "question": "Apa warna Pisang",
+    "answer": {
+      "a": "A. Biru",
+      "b": "B. Merah",
+      "c": "C. Kuning",
+      "d": "D. Ijo"
+    },
+    "correct": "c"
+  }
+]

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "../views/Login";
 import Home from "../views/Home";
 import Quiz from "../views/Quiz";
+import Answer from "../views/Answer";
 
 export default function AppRoutes() {
   return (
@@ -10,6 +11,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/answer" element={<Answer />} />
       </Routes>
     </main>
   );
