@@ -4,13 +4,24 @@ export default function Answer() {
   const long = dummy.length;
   const [done, setDone] = useState(0);
   const [answered, setAnswered] = useState([]);
+  const [answerVal, setAnswerVal] = useState([]);
 
-  const answeredHandler = (index) => {
+  const answeredHandler = (val, index) => {
     if (!answered.includes(index)) {
       setAnswered([...answered, index]);
       setDone(done + 1);
+      const isCorrect =
+        val === dummy[index].correct ? "Correct Answer" : "Wrong Answer";
+      const newObj = {
+        num: index + 1,
+        answer: val,
+        correct: isCorrect,
+      };
+      setAnswerVal((before) => [...before, newObj]);
     }
   };
+
+  console.log(answerVal);
 
   return (
     <>
@@ -29,37 +40,41 @@ export default function Answer() {
               <div className="flex flex-col gap-4">
                 <div className="flex gap-4">
                   <input
-                    onChange={() => answeredHandler(index)}
+                    onChange={(e) => answeredHandler(e.target.value, index)}
                     type="radio"
                     name={index}
                     id={`q-${index}-a`}
+                    value="a"
                   />
                   <label htmlFor={`q-${index}-a`}>{data.answer.a}</label>
                 </div>
                 <div className="flex gap-4">
                   <input
-                    onChange={() => answeredHandler(index)}
+                    onChange={(e) => answeredHandler(e.target.value, index)}
                     type="radio"
                     name={index}
                     id={`q-${index}-b`}
+                    value="b"
                   />
                   <label htmlFor={`q-${index}-b`}>{data.answer.b}</label>
                 </div>
                 <div className="flex gap-4">
                   <input
-                    onChange={() => answeredHandler(index)}
+                    onChange={(e) => answeredHandler(e.target.value, index)}
                     type="radio"
                     name={index}
                     id={`q-${index}-c`}
+                    value="c"
                   />
                   <label htmlFor={`q-${index}-c`}>{data.answer.c}</label>
                 </div>
                 <div className="flex gap-4">
                   <input
-                    onChange={() => answeredHandler(index)}
+                    onChange={(e) => answeredHandler(e.target.value, index)}
                     type="radio"
                     name={index}
                     id={`q-${index}-d`}
+                    value="d"
                   />
                   <label htmlFor={`q-${index}-d`}>{data.answer.d}</label>
                 </div>
@@ -85,6 +100,28 @@ export default function Answer() {
         ></div>
         <p className="z-10">{(done / long) * 100}%</p>{" "}
       </div>
+
+      <section>
+        <h1>Your Answer is</h1>
+        {answerVal.map((val, index) => {
+          return (
+            <div key={index}>
+              <p>
+                {val.num}. {val.answer} |{" "}
+                <span
+                  className={`font-semibold ${
+                    val.correct.includes("Correct")
+                      ? "text-green-400"
+                      : "text-red-500"
+                  }`}
+                >
+                  {val.correct}
+                </span>
+              </p>
+            </div>
+          );
+        })}
+      </section>
     </>
   );
 }
