@@ -101,19 +101,23 @@ export default function Answer() {
         <p className="z-10">{(done / long) * 100}%</p>{" "}
       </div>
 
-      <section>
-        <h1>Your Answer is</h1>
+      <section className="flex flex-col gap-4 items-center w-full p-4">
+        <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-700 bg-clip-text text-transparent">
+          Your Answer is
+        </h1>
         {answerVal.map((val, index) => {
           return (
-            <div key={index}>
-              <p>
-                {val.num}. {val.answer} |{" "}
+            <div className="p-4 flex items-center" key={index}>
+              <p className="flex gap-4 justify-center items-center">
+                <span>
+                  {val.num}. <span className="font-bold">{val.answer}</span>
+                </span>
                 <span
                   className={`font-semibold ${
                     val.correct.includes("Correct")
                       ? "text-green-400"
                       : "text-red-500"
-                  }`}
+                  } p-2`}
                 >
                   {val.correct}
                 </span>
