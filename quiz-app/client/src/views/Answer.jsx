@@ -5,6 +5,10 @@ export default function Answer() {
   const [done, setDone] = useState(0);
   const [answered, setAnswered] = useState([]);
   const [answerVal, setAnswerVal] = useState([]);
+  const [showResult, setShowResult] = useState({
+    score: 0,
+    isShowResult: null,
+  });
 
   const answeredHandler = (val, index) => {
     if (!answered.includes(index)) {
@@ -21,7 +25,22 @@ export default function Answer() {
     }
   };
 
-  console.log(answerVal);
+  const submitHandler = () => {
+    let correct = 0;
+    answerVal.forEach((val) => {
+      console.log(val);
+      if (val.isCorrect == "Correct Answer") {
+        correct++;
+      }
+    });
+
+    const skor = (correct / answerVal.length) * 100;
+    setShowResult({
+      ...showResult,
+      score: skor,
+      isShowResult: true,
+    });
+  };
 
   return (
     <>
@@ -89,7 +108,10 @@ export default function Answer() {
       ) : (
         ""
       )}
-      <button className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100">
+      <button
+        onClick={submitHandler}
+        className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100"
+      >
         Submit Quiz{" "}
       </button>
 
@@ -126,6 +148,12 @@ export default function Answer() {
           );
         })}
       </section>
+
+      {showResult.isShowResult && (
+        <section>
+          <p>Your score is {showResult.score}</p>
+        </section>
+      )}
     </>
   );
 }
