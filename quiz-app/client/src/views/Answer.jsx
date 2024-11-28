@@ -68,22 +68,23 @@ export default function Answer() {
           );
         })}
       </section>
-      <button className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100">
-        Submit Quiz
-      </button>
 
-      <div className="fixed top-1/2 left-0 border-2 border-indigo-500 w-32 h-10 flex justify-center items-center">
-        <div
-          style={{ width: `${(done / long) * 100}%` }}
-          className="h-full bg-indigo-500 absolute left-0 z-0"
-        ></div>
-        <p className="z-10">{(done / long) * 100}%</p>{" "}
-      </div>
       {done == long ? (
-        <p className="fixed text-2xl top-1/2 animate-ping">Done congratsss👺</p>
+        <span className="text-xs animate-muncul">💡Submit for assesment</span>
       ) : (
         ""
       )}
+      <button className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100">
+        Submit Quiz{" "}
+      </button>
+
+      <div className="fixed top-1/2 right-0 border-2 border-indigo-500 w-32 h-10 flex justify-center items-center">
+        <div
+          style={{ width: `${(done / long) * 100}%` }}
+          className="h-full bg-indigo-500 absolute right-0 z-0"
+        ></div>
+        <p className="z-10">{(done / long) * 100}%</p>{" "}
+      </div>
     </>
   );
 }
