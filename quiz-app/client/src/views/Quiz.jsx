@@ -10,6 +10,9 @@ export default function Quiz() {
   });
   const [quizes, setQuizes] = useState([]);
 
+  const [link, setLink] = useState(false);
+  const [clipboard, setClipboard] = useState(false);
+
   const questionHandle = (e) => {
     setQuiz({
       ...quiz,
@@ -56,6 +59,16 @@ export default function Quiz() {
       c: "",
       d: "",
     });
+  };
+
+  const submitHandler = () => {
+    setLink(true);
+  };
+
+  const copyClipboard = () => {
+    const random = Math.round(Math.random() * 10 + 1);
+    navigator.clipboard.writeText(`http://localhost:5173/answer/${random}`);
+    setClipboard(!clipboard);
   };
 
   return (
@@ -205,7 +218,34 @@ export default function Quiz() {
         )}
       </section>
 
-      <button className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-ping active:border-slate-900 active:text-slate-100">
+      {link && (
+        <div className="flex gap-4 p-1 justify-center items-center">
+          <div className="animate-faded flex gap-2 p-4 justify-center items-center bg-slate-50/30 backdrop-blur-md rounded-md border-2 border-indigo-500">
+            <input
+              className="p-1 rounded-md text-center border-2 border-indigo-500"
+              type="text"
+              disabled
+              value="https://sebussmith.com/123/332"
+            />
+            <button
+              onClick={copyClipboard}
+              className={`p-2 ${
+                clipboard ? "bg-slate-900" : ""
+              } border-2 border-indigo-500 rounded-md hover:bg-indigo-500`}
+            >
+              copy
+            </button>
+          </div>
+          {clipboard && (
+            <p className={`animate-copied absolute right-1/3`}>Copied</p>
+          )}
+        </div>
+      )}
+
+      <button
+        onClick={submitHandler}
+        className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-btn active:border-slate-900 active:text-slate-100"
+      >
         Create Quiz
       </button>
     </>
