@@ -19,9 +19,6 @@ export default function Navbar() {
           <Link className="hover:text-indigo-500" to="/about">
             About
           </Link>
-          <Link className="hover:text-indigo-500" to="/login">
-            Login
-          </Link>
         </div>
 
         <button
