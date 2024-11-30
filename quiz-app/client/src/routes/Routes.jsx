@@ -11,7 +11,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/answer" element={<Answer />} />
+        <Route path="/answer/:id" element={<Answer />} />
       </Routes>
     </main>
   );

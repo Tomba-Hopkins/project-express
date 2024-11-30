@@ -12,6 +12,7 @@ export default function Quiz() {
 
   const [link, setLink] = useState(false);
   const [clipboard, setClipboard] = useState(false);
+  const [code, setCode] = useState("");
 
   const questionHandle = (e) => {
     setQuiz({
@@ -63,11 +64,12 @@ export default function Quiz() {
 
   const submitHandler = () => {
     setLink(true);
+    const random = Math.round(Math.random() * 10 + 1);
+    setCode(random);
   };
 
   const copyClipboard = () => {
-    const random = Math.round(Math.random() * 10 + 1);
-    navigator.clipboard.writeText(`http://localhost:5173/answer/${random}`);
+    navigator.clipboard.writeText(`http://localhost:5173/answer/${code}`);
     setClipboard(!clipboard);
   };
 
@@ -225,7 +227,7 @@ export default function Quiz() {
               className="p-1 rounded-md text-center border-2 border-indigo-500"
               type="text"
               disabled
-              value="https://sebussmith.com/123/332"
+              value={`https://sebussmith.com/answer/${code}`}
             />
             <button
               onClick={copyClipboard}
