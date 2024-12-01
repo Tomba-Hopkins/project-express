@@ -1,14 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function About() {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: true,
+    });
+    Aos.refresh();
+  }, []);
+
   return (
     <>
       <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-700 bg-clip-text text-transparent">
         About Page
       </h1>
 
-      <section className="w-full min-h-screen my-8 p-4 flex flex-col items-center justify-center gap-2">
+      <section
+        data-aos="fade-left"
+        className="w-full min-h-screen my-8 p-4 flex flex-col items-center justify-center gap-2"
+      >
         <h1 className="text-2xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
           Summary
         </h1>
@@ -19,7 +33,10 @@ export default function About() {
         <span className="text-xs">and keep grinding☠️</span>
       </section>
 
-      <section className="w-full min-h-screen my-8 p-4 flex flex-col items-center justify-center gap-2">
+      <section
+        data-aos="fade-left"
+        className="w-full min-h-screen my-8 p-4 flex flex-col items-center justify-center gap-2"
+      >
         <h1 className="text-2xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
           Tech Stack
         </h1>
@@ -98,7 +115,10 @@ export default function About() {
         </div>
       </section>
 
-      <section className="w-full min-h-screen my-4 p-4 flex flex-col items-center justify-center gap-2">
+      <section
+        data-aos="fade-left"
+        className="w-full min-h-screen my-4 p-4 flex flex-col items-center justify-center gap-2"
+      >
         <h1 className="text-2xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
           Contact me
         </h1>
