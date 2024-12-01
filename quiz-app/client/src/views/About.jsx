@@ -48,27 +48,27 @@ export default function About() {
 
             <div className="w-full flex flex-wrap gap-8 justify-between items-center">
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/react.svg"
                 alt="react"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/reactrouter.svg"
                 alt="react-router"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/vite.svg"
                 alt="vite"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/tailwindcss.svg"
                 alt="tailwind"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/fa.svg"
                 alt="font-awesome"
               />
@@ -86,7 +86,7 @@ export default function About() {
                 alt="express"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/mongodb.svg"
                 alt="mongodb"
               />
@@ -96,17 +96,17 @@ export default function About() {
                 alt="mongoose"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/node.svg"
                 alt="node"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/dotenv.svg"
                 alt="dotenv"
               />
               <img
-                className="w-1/4 h-1/4 grayscale hover:grayscale-0 duration-150"
+                className="w-full md:w-1/4 h-1/4 md:grayscale hover:grayscale-0 duration-150"
                 src="/assets/docker.svg"
                 alt="docker"
               />

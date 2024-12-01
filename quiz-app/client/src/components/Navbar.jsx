@@ -48,9 +48,9 @@ export default function Navbar() {
         </Link>
         <Link
           className=" w-full bg-indigo-500 py-4 border-y-2 border-indigo-500"
-          to="/login"
+          to="/about"
         >
-          Login
+          About
         </Link>
       </nav>
     </>
