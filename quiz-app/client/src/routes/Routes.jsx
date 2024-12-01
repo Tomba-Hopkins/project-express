@@ -7,7 +7,7 @@ import About from "../views/About";
 
 export default function AppRoutes() {
   return (
-    <main className="w-full min-h-screen flex flex-col gap-8 items-center bg-slate-900 text-slate-200 pt-32">
+    <main className="w-full pb-44 min-h-screen flex flex-col gap-8 items-center bg-slate-900 text-slate-200 pt-32">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

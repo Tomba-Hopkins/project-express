@@ -6,7 +6,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full flex gap-8 p-6 font-bold bg-slate-300/30 text-slate-300 backdrop-blur-md fixed top-0 border-b-2 border-b-indigo-500 justify-between items-center">
+      <nav className="w-full z-50 flex gap-8 p-6 font-bold bg-slate-300/30 text-slate-300 backdrop-blur-md fixed top-0 border-b-2 border-b-indigo-500 justify-between items-center">
         <p>Learn App</p>
 
         <div className="hidden md:flex w-1/3 gap-4">
@@ -30,7 +30,7 @@ export default function Navbar() {
       </nav>
 
       <nav
-        className={`w-1/4 h-screen flex flex-col gap-4 font-bold text-slate-300 border-r-2 border-r-indigo-500 transform ${
+        className={`z-50 w-1/4 h-screen flex flex-col gap-4 font-bold text-slate-300 border-r-2 border-r-indigo-500 transform ${
           navAct ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 fixed items-center justify-center text-center`}
       >
