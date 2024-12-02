@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export default function Quiz() {
   const [quiz, setQuiz] = useState({
@@ -70,13 +71,18 @@ export default function Quiz() {
     });
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
     setLink(true);
     const random = Math.round(Math.random() * 10 + 1);
     setCode(random);
 
     try {
-      console.log("Tru");
+      const result = await axios.post("http://localhost:5000/api/create-quiz", {
+        id_quiz: random, // harus random soalnya belum keluar dari sini jadi gabisa masuk ke state code
+        quizes,
+      });
+
+      console.log(result);
     } catch (err) {
       console.log(err);
     } finally {
@@ -179,7 +185,6 @@ export default function Quiz() {
               onChange={correctHandle}
               className="w-20 ml-4 text-center rounded-md bg-slate-900 border-2 border-indigo-500 hover:border-indigo-400 hover:bg-indigo-900"
             >
-              <option></option>
               <option value="a">A</option>
               <option value="b">B</option>
               <option value="c">C</option>
