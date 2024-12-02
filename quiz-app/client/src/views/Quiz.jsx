@@ -246,7 +246,7 @@ export default function Quiz() {
 
       <button
         onClick={submitHandler}
-        className="w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-btn active:border-slate-900 active:text-slate-100"
+        className="w-1/2 md:w-1/4 mb-24 font-semibold mt-8 px-8 py-2 rounded-md border-2 border-indigo-500 mx-auto hover:bg-indigo-500 hover:text-slate-900 duration-100 active:animate-btn active:border-slate-900 active:text-slate-100"
       >
         Create Quiz
       </button>

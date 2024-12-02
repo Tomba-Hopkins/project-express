@@ -23,7 +23,7 @@ export default function About() {
         data-aos="fade-left"
         className="w-full min-h-screen my-8 p-4 flex flex-col items-center justify-center gap-2"
       >
-        <h1 className="text-2xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
+        <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
           Summary
         </h1>
         <p className="font-serif text-center bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
@@ -37,12 +37,12 @@ export default function About() {
         data-aos="fade-left"
         className="w-full min-h-screen my-8 p-4 flex flex-col items-center justify-center gap-2"
       >
-        <h1 className="text-2xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
+        <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
           Tech Stack
         </h1>
-        <div className="w-full my-10 p-4 grid grid-cols-2 place-items-center gap-4">
+        <div className="w-full my-10 p-4 grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
           <div className="p-8 gap-8 flex flex-col items-center w-1/2 rounded-md">
-            <h1 className="text-2xl bg-gradient-to-r from-slate-500 font-semibold to-slate-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl bg-gradient-to-r from-slate-500 font-semibold to-slate-300 bg-clip-text text-transparent">
               Frontend
             </h1>
 
@@ -75,13 +75,13 @@ export default function About() {
             </div>
           </div>
           <div className="p-8 gap-8 flex flex-col items-center w-1/2 rounded-md">
-            <h1 className="text-2xl bg-gradient-to-r from-slate-500 font-semibold to-slate-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl bg-gradient-to-r from-slate-500 font-semibold to-slate-300 bg-clip-text text-transparent">
               Backend
             </h1>
 
             <div className="w-full flex flex-wrap gap-8 justify-between items-center">
               <img
-                className="w-1/4 h-1/4 bg-white p-2"
+                className="w-full md:w-1/4 h-1/4 bg-white p-2"
                 src="/assets/express.svg"
                 alt="express"
               />
@@ -91,7 +91,7 @@ export default function About() {
                 alt="mongodb"
               />
               <img
-                className="w-1/4 h-1/4"
+                className="w-full md:w-1/4 h-1/4"
                 src="/assets/mongoose.svg"
                 alt="mongoose"
               />
@@ -119,7 +119,7 @@ export default function About() {
         data-aos="fade-left"
         className="w-full min-h-screen my-4 p-4 flex flex-col items-center justify-center gap-2"
       >
-        <h1 className="text-2xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
+        <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-300 bg-clip-text text-transparent">
           Contact me
         </h1>
         <a href="https://github.com/tomba-hopkins">
