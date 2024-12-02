@@ -73,7 +73,7 @@ export default function Quiz() {
 
   const submitHandler = async () => {
     setLink(true);
-    const random = Math.round(Math.random() * 10 + 1);
+    const random = Math.round(Math.random() * 10 + 1).toString();
     setCode(random);
 
     try {
@@ -185,6 +185,9 @@ export default function Quiz() {
               onChange={correctHandle}
               className="w-20 ml-4 text-center rounded-md bg-slate-900 border-2 border-indigo-500 hover:border-indigo-400 hover:bg-indigo-900"
             >
+              <option value="" disabled>
+                Pilih Jawaban
+              </option>
               <option value="a">A</option>
               <option value="b">B</option>
               <option value="c">C</option>
