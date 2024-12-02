@@ -7,6 +7,7 @@ export default function Quiz() {
     b: "",
     c: "",
     d: "",
+    correct: "",
   });
   const [quizes, setQuizes] = useState([]);
 
@@ -44,6 +45,12 @@ export default function Quiz() {
       d: e.target.value,
     });
   };
+  const correctHandle = (e) => {
+    setQuiz({
+      ...quiz,
+      correct: e.target.value,
+    });
+  };
 
   const addQuestionHandle = (e) => {
     e.preventDefault();
@@ -59,6 +66,7 @@ export default function Quiz() {
       b: "",
       c: "",
       d: "",
+      correct: "",
     });
   };
 
@@ -66,6 +74,25 @@ export default function Quiz() {
     setLink(true);
     const random = Math.round(Math.random() * 10 + 1);
     setCode(random);
+
+    try {
+      console.log("Tru");
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setCode("");
+      setClipboard(false);
+      setLink(false);
+      setQuiz({
+        question: "",
+        a: "",
+        b: "",
+        c: "",
+        d: "",
+        correct: "",
+      });
+      setQuizes([]);
+    }
   };
 
   const copyClipboard = () => {
@@ -148,7 +175,10 @@ export default function Quiz() {
 
           <section className="flex gap-8">
             <p>Select your correct answer</p>
-            <select className="w-20 ml-4 text-center rounded-md bg-slate-900 border-2 border-indigo-500 hover:border-indigo-400 hover:bg-indigo-900">
+            <select
+              onChange={correctHandle}
+              className="w-20 ml-4 text-center rounded-md bg-slate-900 border-2 border-indigo-500 hover:border-indigo-400 hover:bg-indigo-900"
+            >
               <option></option>
               <option value="a">A</option>
               <option value="b">B</option>
@@ -227,7 +257,7 @@ export default function Quiz() {
               className="p-1 rounded-md text-center border-2 border-indigo-500"
               type="text"
               disabled
-              value={`https://sebussmith.com/answer/${code}`}
+              value={`${window.location.origin}/answer/${code}`}
             />
             <button
               onClick={copyClipboard}
