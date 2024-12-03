@@ -15,9 +15,7 @@ export default function Answer() {
         const result = await axios.get(
           `http://localhost:5000/api/answer/${id}`
         );
-        setData(result.data.quiz.quizes || []);
-        console.log(quiz);
-        console.log(result);
+        setData(result.data.quiz.quizes || []); // langsung ambil aja dah data arr nya
         setLong(result.data.quiz.quizes.length);
       };
       getQuiz();
