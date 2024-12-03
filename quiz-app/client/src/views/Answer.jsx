@@ -1,7 +1,33 @@
 import { useState } from "react";
-import dummy from "../data/dummy.json";
+
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
 export default function Answer() {
-  const long = dummy.length;
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [quiz, setData] = useState([]);
+  const [long, setLong] = useState(0);
+
+  useState(() => {
+    try {
+      const getQuiz = async () => {
+        const result = await axios.get(
+          `http://localhost:5000/api/answer/${id}`
+        );
+        setData(result.data.quiz.quizes || []);
+        console.log(quiz);
+        console.log(result);
+        setLong(result.data.quiz.quizes.length);
+      };
+      getQuiz();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const [done, setDone] = useState(0);
   const [answered, setAnswered] = useState([]);
   const [answerVal, setAnswerVal] = useState([]);
@@ -17,7 +43,7 @@ export default function Answer() {
       setAnswered([...answered, index]);
       setDone(done + 1);
       const isCorrect =
-        val === dummy[index].correct ? "Correct Answer" : "Wrong Answer";
+        val === quiz[index].correct ? "Correct Answer" : "Wrong Answer";
       const newObj = {
         num: index + 1,
         answer: val,
@@ -47,13 +73,23 @@ export default function Answer() {
     }
   };
 
+  if (loading) {
+    return (
+      <>
+        <p>Loading....</p>
+      </>
+    );
+  }
+
+  console.log(quiz);
+
   return (
     <>
       <h1 className="text-4xl p-8 font-bold bg-gradient-to-r from-indigo-500 to-slate-700 bg-clip-text text-transparent">
         Answer Page
       </h1>
       <section className="flex flex-col gap-8 m-8 p-8 w-1/2 mx-auto border-2 border-blue-400">
-        {dummy.map((data, index) => {
+        {quiz.map((data, index) => {
           return (
             <div key={index} className="p-4 border-b-2 border-b-indigo-500">
               <p>
@@ -70,7 +106,7 @@ export default function Answer() {
                     id={`q-${index}-a`}
                     value="a"
                   />
-                  <label htmlFor={`q-${index}-a`}>{data.answer.a}</label>
+                  <label htmlFor={`q-${index}-a`}>{data.a}</label>
                 </div>
                 <div className="flex gap-4">
                   <input
@@ -80,7 +116,7 @@ export default function Answer() {
                     id={`q-${index}-b`}
                     value="b"
                   />
-                  <label htmlFor={`q-${index}-b`}>{data.answer.b}</label>
+                  <label htmlFor={`q-${index}-b`}>{data.b}</label>
                 </div>
                 <div className="flex gap-4">
                   <input
@@ -90,7 +126,7 @@ export default function Answer() {
                     id={`q-${index}-c`}
                     value="c"
                   />
-                  <label htmlFor={`q-${index}-c`}>{data.answer.c}</label>
+                  <label htmlFor={`q-${index}-c`}>{data.c}</label>
                 </div>
                 <div className="flex gap-4">
                   <input
@@ -100,7 +136,7 @@ export default function Answer() {
                     id={`q-${index}-d`}
                     value="d"
                   />
-                  <label htmlFor={`q-${index}-d`}>{data.answer.d}</label>
+                  <label htmlFor={`q-${index}-d`}>{data.d}</label>
                 </div>
               </div>
             </div>
