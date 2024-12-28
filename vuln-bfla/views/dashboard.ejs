@@ -14,6 +14,7 @@
       body {
         height: 100vh;
         display: flex;
+        gap: 3rem;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -29,6 +30,43 @@
         -webkit-background-clip: text;
       }
       .logout {
+        position: absolute;
+        top: 2rem;
+        right: 5rem;
+      }
+
+      button {
+        padding: 1rem 1.5rem;
+        background-color: rgb(197, 27, 27);
+        color: var(--primary);
+        border: none;
+        border-radius: 0.2rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: var(--cerah);
+        color: #1e2022;
+      }
+
+      .box {
+        width: 50vw;
+        height: 30vh;
+        display: flex;
+        font-size: small;
+        flex-direction: column;
+        justify-content: center;
+        animation: fade 5s ease;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
     </style>
   </head>
@@ -38,8 +76,7 @@
     <div class="box">
       <p>Are you like a nasgor 😁</p>
       <p>Wanna taste other food like tahu tek😔</p>
-      <p>This is your secret recipe</p>
     </div>
-    <button>Show recipe</button>
+    <button>Show secret recipe</button>
   </body>
 </html>
