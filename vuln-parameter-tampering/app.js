@@ -45,7 +45,7 @@ app.post("/login", (req, res) => {
   );
 
   if (!user) {
-    res.redirect("/");
+    return res.redirect("/");
   }
 
   req.session.orang = {
