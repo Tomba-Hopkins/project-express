@@ -68,15 +68,34 @@
           opacity: 1;
         }
       }
+
+      .content {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <button class="logout">Logout</button>
+    <a href="/logout"><button class="logout">Logout</button></a>
     <h1>Welcome name</h1>
     <div class="box">
       <p>Are you like a nasgor 😁</p>
       <p>Wanna taste other food like tahu tek😔</p>
     </div>
-    <button>Show secret recipe</button>
+    <button class="recipe">Show secret recipe</button>
+    <p class="content">
+      <% if (user.role === "chef") { %> FLAG{S3CR3T_R3C1P3} <% } else { %> You
+      are not our chef, get out! <% } %>
+    </p>
+
+    <script>
+      const recipeBtn = document.querySelector(".recipe");
+      const content = document.querySelector(".content");
+
+      recipeBtn.addEventListener("click", () => {
+        content.style.display = "flex";
+
+        content.style.animation = "fade 5s ease";
+      });
+    </script>
   </body>
 </html>

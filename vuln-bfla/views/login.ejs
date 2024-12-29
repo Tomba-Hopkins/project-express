@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <style>
+      /* credentials */
+      /* username: rocky */
+      /* password: rocky123 */
+
       :root {
         --gelap: #1e2022;
         --cerah: #f0f5f9;
@@ -82,11 +86,12 @@
     <form action="/login" method="post">
       <div>
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" />
+        <input required type="text" id="username" name="username" />
       </div>
       <div>
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" />
+        <input required type="password" id="password" name="password" />
+        <input required type="hidden" name="role" value="intern" />
       </div>
       <button type="submit">Login</button>
     </form>

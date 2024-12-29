@@ -1,5 +1,5 @@
 {
-  "name": "vuln-bfla",
+  "name": "vuln-parameter-tampering",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -13,6 +13,7 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "nodemon": "^3.1.9"
   }
 }
