@@ -6,13 +6,13 @@
     <title>Login Page</title>
     <style>
       :root {
-        --gelap: #1e2022;
-        --cerah: #f0f5f9;
-        --primary: #c9d6df;
+        --gelap: #2c3333;
+        --cerah: #e7f6f2;
+        --primary: #a5c9ca;
       }
 
       body {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         gap: 3rem;
         flex-direction: column;
@@ -22,6 +22,7 @@
         color: var(--cerah);
         font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
           "Lucida Sans", Arial, sans-serif;
+        padding: 1rem;
       }
 
       h1 {
@@ -34,6 +35,13 @@
         top: 2rem;
         right: 5rem;
       }
+      .recipebtn {
+        background-color: var(--primary);
+        color: var(--gelap);
+        position: absolute;
+        top: 2rem;
+        right: 15rem;
+      }
 
       button {
         padding: 1rem 1.5rem;
@@ -43,6 +51,7 @@
         border-radius: 0.2rem;
         transition: all 0.3s ease;
         cursor: pointer;
+        font-weight: bold;
       }
 
       button:hover {
@@ -51,13 +60,30 @@
       }
 
       .box {
-        width: 50vw;
-        height: 30vh;
+        width: 30vw;
+        min-height: 50vh;
         display: flex;
+
+        gap: 2rem;
         font-size: small;
         flex-direction: column;
-        justify-content: center;
+        border-radius: 0.5rem;
+
         animation: fade 5s ease;
+        background-color: var(--primary);
+        padding: 2rem;
+      }
+
+      .recipe {
+        width: full;
+        height: 8rem;
+        border-radius: 0.2rem;
+        background-color: var(--gelap);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem;
       }
 
       @keyframes fade {
@@ -68,34 +94,22 @@
           opacity: 1;
         }
       }
-
-      .content {
-        display: none;
-      }
     </style>
   </head>
   <body>
     <a href="/logout"><button class="logout">Logout</button></a>
+    <a href="/create-recipe"
+      ><button class="recipebtn">Create recipe</button></a
+    >
+
     <h1>Welcome name</h1>
     <div class="box">
-      <p>Are you like a nasgor 😁</p>
-      <p>Wanna taste other food like tahu tek😔</p>
+      <% for(const recipe of recipes) { %>
+      <div class="recipe">
+        <p><%= recipe.name %></p>
+        <p><%= recipe.description %></p>
+      </div>
+      <% } %>
     </div>
-    <button class="recipe">Show secret recipe</button>
-    <p class="content">
-      <% if (user.role === "chef") { %> FLAG{S3CR3T_R3C1P3} <% } else { %> You
-      are not our chef, get out! <% } %>
-    </p>
-
-    <script>
-      const recipeBtn = document.querySelector(".recipe");
-      const content = document.querySelector(".content");
-
-      recipeBtn.addEventListener("click", () => {
-        content.style.display = "flex";
-
-        content.style.animation = "fade 5s ease";
-      });
-    </script>
   </body>
 </html>

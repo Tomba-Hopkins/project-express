@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <style>
+      /* credentials */
+      /* username: rocky */
+      /* password: rocky123 */
+
       :root {
         --gelap: #2c3333;
         --cerah: #e7f6f2;
@@ -24,7 +28,7 @@
       }
 
       h1 {
-        background: linear-gradient(to right, var(--primary), var(--gelap));
+        background: linear-gradient(to right, var(--primary), var(--cerah));
         color: transparent;
         -webkit-background-clip: text;
       }
@@ -32,7 +36,7 @@
       form {
         display: flex;
         width: 20vw;
-        height: 30vh;
+        min-height: 30vh;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -79,18 +83,22 @@
     </style>
   </head>
   <body>
-    <h1>Login Page</h1>
-    <form class="form" action="/login" method="post">
+    <h1>FLAG{H0W_Y0U_KN0W_TH4T}</h1>
+    <form class="form" action="/create-recipe" method="post">
       <div>
-        <label for="username">Username</label>
-        <input required type="text" id="username" name="username" />
+        <label for="name">Name</label>
+        <input required type="text" id="name" name="name" />
       </div>
       <div>
-        <label for="password">Password</label>
-        <input required type="password" id="password" name="password" />
-        <input required type="hidden" id="role" name="role" value="user" />
+        <label for="description">Description</label>
+        <textarea
+          rows="5"
+          required
+          id="description"
+          name="description"
+        ></textarea>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Create</button>
     </form>
 
     <script>
@@ -99,26 +107,24 @@
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const username = document.querySelector("#username").value;
-        const password = document.querySelector("#password").value;
-        const role = document.querySelector("#role").value;
+        const name = document.querySelector("#name").value;
+        const description = document.querySelector("#description").value;
 
-        const response = await fetch("http://localhost:5000/login", {
+        const response = await fetch("http://localhost:5000/create-recipe", {
           method: "post",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username,
-            password,
-            role,
+            name,
+            description,
           }),
         });
 
         if (response.ok) {
           window.location.href = "/dashboard";
         } else {
-          alert("Who are you");
+          alert("Something wrong");
         }
       });
     </script>
