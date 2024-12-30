@@ -6,9 +6,9 @@
     <title>Login Page</title>
     <style>
       :root {
-        --gelap: #1e2022;
-        --cerah: #f0f5f9;
-        --primary: #c9d6df;
+        --gelap: #222831;
+        --cerah: #eeeeee;
+        --primary: #ffd369;
       }
 
       body {
@@ -25,9 +25,10 @@
       }
 
       h1 {
-        background: linear-gradient(to right, var(--primary), var(--gelap));
+        background: linear-gradient(to right, var(--primary), var(--cerah));
         color: transparent;
         -webkit-background-clip: text;
+        animation: fade 5s ease;
       }
       .logout {
         position: absolute;
@@ -37,27 +38,18 @@
 
       button {
         padding: 1rem 1.5rem;
-        background-color: rgb(197, 27, 27);
-        color: var(--primary);
+        background-color: var(--primary);
+        color: var(--gelap);
         border: none;
         border-radius: 0.2rem;
         transition: all 0.3s ease;
         cursor: pointer;
+        font-weight: bold;
       }
 
       button:hover {
         background-color: var(--cerah);
         color: #1e2022;
-      }
-
-      .box {
-        width: 50vw;
-        height: 30vh;
-        display: flex;
-        font-size: small;
-        flex-direction: column;
-        justify-content: center;
-        animation: fade 5s ease;
       }
 
       @keyframes fade {
@@ -68,34 +60,10 @@
           opacity: 1;
         }
       }
-
-      .content {
-        display: none;
-      }
     </style>
   </head>
   <body>
     <a href="/logout"><button class="logout">Logout</button></a>
-    <h1>Welcome name</h1>
-    <div class="box">
-      <p>Are you like a nasgor 😁</p>
-      <p>Wanna taste other food like tahu tek😔</p>
-    </div>
-    <button class="recipe">Show secret recipe</button>
-    <p class="content">
-      <% if (user.role === "chef") { %> FLAG{S3CR3T_R3C1P3} <% } else { %> You
-      are not our chef, get out! <% } %>
-    </p>
-
-    <script>
-      const recipeBtn = document.querySelector(".recipe");
-      const content = document.querySelector(".content");
-
-      recipeBtn.addEventListener("click", () => {
-        content.style.display = "flex";
-
-        content.style.animation = "fade 5s ease";
-      });
-    </script>
+    <h1>FLAG{N0_W4Y}</h1>
   </body>
 </html>

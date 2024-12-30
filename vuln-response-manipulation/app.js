@@ -1,7 +1,8 @@
 import express from "express";
-import session from "express-session";
 
 import * as path from "path";
+
+import session from "express-session";
 
 const app = express();
 
@@ -11,22 +12,16 @@ const users = [
     username: "rocky",
     password: "rocky123",
   },
-  {
-    id: 2,
-    username: "admin",
-    password: "admin123",
-  },
 ];
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
 app.use(
   session({
-    secret: "keyboard-cat",
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
   })
 );
 
@@ -37,35 +32,40 @@ app.get("/", (req, res) => {
   res.render("login");
 });
 
+app.get("/get-session", (req, res) => {
+  req.session.log = {
+    login: "ok",
+  };
+  res.redirect("/dashboard");
+});
+
 app.post("/login", (req, res) => {
-  const { username, password, role } = req.body;
+  const { username, password } = req.body;
 
   const user = users.find(
     (u) => u.username === username && u.password === password
   );
 
   if (!user) {
-    return res.redirect("/");
+    return res.status(404).json({
+      status: 404,
+      message: "Invalid user",
+      attempt: true,
+    });
   }
-
-  req.session.orang = {
-    id: user.id,
-    username: user.username,
-    password: user.password,
-    role: role,
-  };
-
-  res.redirect("/dashboard");
+  res.status(200).json({
+    status: 200,
+    message: "Login succesful",
+    attempt: true,
+  });
 });
 
 app.get("/dashboard", (req, res) => {
-  const user = req.session.orang;
+  const { log } = req.session;
 
-  if (!user) return res.redirect("/");
+  if (!log) return res.redirect("/");
 
-  res.render("dashboard", {
-    user,
-  });
+  res.render("dashboard");
 });
 
 app.get("/logout", (req, res) => {

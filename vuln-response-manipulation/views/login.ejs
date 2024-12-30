@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <style>
-      /* credentials */
-      /* username: rocky */
-      /* password: rocky123 */
-
       :root {
-        --gelap: #1e2022;
-        --cerah: #f0f5f9;
-        --primary: #c9d6df;
+        --gelap: #222831;
+        --cerah: #eeeeee;
+        --primary: #ffd369;
       }
 
       body {
@@ -83,7 +79,7 @@
   </head>
   <body>
     <h1>Login Page</h1>
-    <form action="/login" method="post">
+    <form>
       <div>
         <label for="username">Username</label>
         <input required type="text" id="username" name="username" />
@@ -91,9 +87,44 @@
       <div>
         <label for="password">Password</label>
         <input required type="password" id="password" name="password" />
-        <input required type="hidden" name="role" value="intern" />
       </div>
       <button type="submit">Login</button>
     </form>
+
+    <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const username = document.querySelector("#username").value;
+        const password = document.querySelector("#password").value;
+
+        const response = await fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (data.status === 200) {
+          const responseSession = await fetch(
+            "http://localhost:5000/get-session"
+          );
+
+          if (responseSession.ok) {
+            window.location.href = `/dashboard`;
+          }
+        } else {
+          alert("Invalid user");
+        }
+      });
+    </script>
   </body>
 </html>
