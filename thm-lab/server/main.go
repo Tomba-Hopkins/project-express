@@ -1,15 +1,15 @@
 package main
 
 import (
+	"belajar-go/handler"
 	"fmt"
 	"log"
 	"net/http"
-
-	"github.com/Tomba-Hopkins/project-express/belajar-golang/handler"
 )
 
 func main() {
 
+	http.HandleFunc("/test", handler.TestFunc)
 	http.HandleFunc("/login", handler.LoginFunc)
 
 

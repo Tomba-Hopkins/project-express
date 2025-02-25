@@ -1,3 +1,5 @@
-module github.com/Tomba-Hopkins/project-express/belajar-golang
+module belajar-go
 
 go 1.21.2
+
+
