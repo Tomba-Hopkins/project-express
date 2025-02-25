@@ -4,6 +4,8 @@ import { motion } from "motion/react"
 
 import axios from "axios"
 
+axios.defaults.withCredentials = true
+
 
 // eslint-disable-next-line react/prop-types
 export default function Login({ setValid }) {
@@ -22,8 +24,8 @@ export default function Login({ setValid }) {
                 username: uname,
                 password: passwd,
             }, {
-                headers: { "Content-Type": "application/json" }
-            })
+                headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "application/json" }
+            },)
 
             if (res.status == 200) {
                 console.log('Correct')

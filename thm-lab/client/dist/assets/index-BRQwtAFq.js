@@ -65,7 +65,7 @@ var Wm;
 function a1() {
   return Wm || ((Wm = 1), (qo.exports = i1())), qo.exports;
 }
-var Nt = a1(),
+var Lt = a1(),
   Yo = { exports: {} },
   ut = {};
 /**
@@ -3863,7 +3863,7 @@ Error generating stack: ` +
     Za = 0,
     Fi = null,
     Fv = 0;
-  function zt() {
+  function Bt() {
     throw Error(u(321));
   }
   function dr(t, e) {
@@ -4676,28 +4676,28 @@ Error generating stack: ` +
   var Je = {
     readContext: te,
     use: bs,
-    useCallback: zt,
-    useContext: zt,
-    useEffect: zt,
-    useImperativeHandle: zt,
-    useLayoutEffect: zt,
-    useInsertionEffect: zt,
-    useMemo: zt,
-    useReducer: zt,
-    useRef: zt,
-    useState: zt,
-    useDebugValue: zt,
-    useDeferredValue: zt,
-    useTransition: zt,
-    useSyncExternalStore: zt,
-    useId: zt,
+    useCallback: Bt,
+    useContext: Bt,
+    useEffect: Bt,
+    useImperativeHandle: Bt,
+    useLayoutEffect: Bt,
+    useInsertionEffect: Bt,
+    useMemo: Bt,
+    useReducer: Bt,
+    useRef: Bt,
+    useState: Bt,
+    useDebugValue: Bt,
+    useDeferredValue: Bt,
+    useTransition: Bt,
+    useSyncExternalStore: Bt,
+    useId: Bt,
   };
-  (Je.useCacheRefresh = zt),
-    (Je.useMemoCache = zt),
-    (Je.useHostTransitionStatus = zt),
-    (Je.useFormState = zt),
-    (Je.useActionState = zt),
-    (Je.useOptimistic = zt);
+  (Je.useCacheRefresh = Bt),
+    (Je.useMemoCache = Bt),
+    (Je.useHostTransitionStatus = Bt),
+    (Je.useFormState = Bt),
+    (Je.useActionState = Bt),
+    (Je.useOptimistic = Bt);
   var oi = {
     readContext: te,
     use: bs,
@@ -12340,11 +12340,11 @@ function w1({
       (S = U.MeasureLayout),
         (O.visualElement = C1(c, _, T, a, U.ProjectionNode));
     }
-    return Nt.jsxs(bu.Provider, {
+    return Lt.jsxs(bu.Provider, {
       value: O,
       children: [
         S && O.visualElement
-          ? Nt.jsx(S, { visualElement: O.visualElement, ...T })
+          ? Lt.jsx(S, { visualElement: O.visualElement, ...T })
           : null,
         s(c, p, O1(_, O.visualElement, g), _, M, O.visualElement),
       ],
@@ -15298,7 +15298,7 @@ function Ol(i, a, s) {
 const Vp = () => ({ translate: 0, scale: 1, origin: 0, originPoint: 0 }),
   ha = () => ({ x: Vp(), y: Vp() }),
   zp = () => ({ min: 0, max: 0 }),
-  Bt = () => ({ x: zp(), y: zp() });
+  Nt = () => ({ x: zp(), y: zp() });
 function He(i) {
   return [i("x"), i("y")];
 }
@@ -15571,7 +15571,7 @@ class TA {
       (this.originPoint = { x: 0, y: 0 }),
       (this.constraints = !1),
       (this.hasMutatedConstraints = !1),
-      (this.elastic = Bt()),
+      (this.elastic = Nt()),
       (this.visualElement = a);
   }
   start(a, { snapToCursor: s = !1 } = {}) {
@@ -16062,7 +16062,7 @@ class xA extends it.Component {
 function Jg(i) {
   const [a, s] = m1(),
     u = it.useContext(By);
-  return Nt.jsx(xA, {
+  return Lt.jsx(xA, {
     ...i,
     layoutGroup: u,
     switchLayoutGroup: it.useContext(Xy),
@@ -16589,7 +16589,7 @@ function n0({
         for (let y = 0; y < this.path.length; y++) this.path[y].updateScroll();
       const f = this.layout;
       (this.layout = this.measure(!1)),
-        (this.layoutCorrected = Bt()),
+        (this.layoutCorrected = Nt()),
         (this.isLayoutDirty = !1),
         (this.projectionDelta = void 0),
         this.notifyListeners("measure", this.layout.layoutBox);
@@ -16654,7 +16654,7 @@ function n0({
     measurePageBox() {
       var f;
       const { visualElement: m } = this.options;
-      if (!m) return Bt();
+      if (!m) return Nt();
       const y = m.measureViewportBox();
       if (
         !(
@@ -16669,7 +16669,7 @@ function n0({
     }
     removeElementScroll(f) {
       var m;
-      const y = Bt();
+      const y = Nt();
       if (
         (je(y, f), !((m = this.scroll) === null || m === void 0) && m.wasRoot)
       )
@@ -16685,7 +16685,7 @@ function n0({
       return y;
     }
     applyTransform(f, m = !1) {
-      const y = Bt();
+      const y = Nt();
       je(y, f);
       for (let p = 0; p < this.path.length; p++) {
         const g = this.path[p];
@@ -16699,13 +16699,13 @@ function n0({
       return bi(this.latestValues) && ma(y, this.latestValues), y;
     }
     removeTransform(f) {
-      const m = Bt();
+      const m = Nt();
       je(m, f);
       for (let y = 0; y < this.path.length; y++) {
         const p = this.path[y];
         if (!p.instance || !bi(p.latestValues)) continue;
         Sc(p.latestValues) && p.updateSnapshot();
-        const g = Bt(),
+        const g = Nt(),
           S = p.measurePageBox();
         je(g, S),
           ey(m, p.latestValues, p.snapshot ? p.snapshot.layoutBox : void 0, g);
@@ -16768,8 +16768,8 @@ function n0({
           M && M.layout && this.animationProgress !== 1
             ? ((this.relativeParent = M),
               this.forceRelativeParentToResolveTarget(),
-              (this.relativeTarget = Bt()),
-              (this.relativeTargetOrigin = Bt()),
+              (this.relativeTarget = Nt()),
+              (this.relativeTargetOrigin = Nt()),
               Ol(
                 this.relativeTargetOrigin,
                 this.layout.layoutBox,
@@ -16781,7 +16781,7 @@ function n0({
         if (
           !(!this.relativeTarget && !this.targetDelta) &&
           (this.target ||
-            ((this.target = Bt()), (this.targetWithTransforms = Bt())),
+            ((this.target = Nt()), (this.targetWithTransforms = Nt())),
           this.relativeTarget &&
           this.relativeTargetOrigin &&
           this.relativeParent &&
@@ -16805,8 +16805,8 @@ function n0({
           this.animationProgress !== 1
             ? ((this.relativeParent = M),
               this.forceRelativeParentToResolveTarget(),
-              (this.relativeTarget = Bt()),
-              (this.relativeTargetOrigin = Bt()),
+              (this.relativeTarget = Nt()),
+              (this.relativeTargetOrigin = Nt()),
               Ol(this.relativeTargetOrigin, this.target, M.target),
               je(this.relativeTarget, this.relativeTargetOrigin))
             : (this.relativeParent = this.relativeTarget = void 0);
@@ -16867,7 +16867,7 @@ function n0({
         m.layout &&
           !m.target &&
           (this.treeScale.x !== 1 || this.treeScale.y !== 1) &&
-          ((m.target = m.layout.layoutBox), (m.targetWithTransforms = Bt()));
+          ((m.target = m.layout.layoutBox), (m.targetWithTransforms = Nt()));
       const { target: O } = m;
       if (!O) {
         this.prevProjectionDelta &&
@@ -16921,7 +16921,7 @@ function n0({
       (!this.relativeParent || !this.relativeParent.options.layoutRoot) &&
         (this.relativeTarget = this.relativeTargetOrigin = void 0),
         (this.attemptToResolveRelativeTarget = !m);
-      const T = Bt(),
+      const T = Nt(),
         M = y ? y.source : void 0,
         O = this.layout ? this.layout.source : void 0,
         _ = M !== O,
@@ -16943,7 +16943,7 @@ function n0({
             (Ol(T, this.layout.layoutBox, this.relativeParent.layout.layoutBox),
             nE(this.relativeTarget, this.relativeTargetOrigin, T, j),
             Y && qA(this.relativeTarget, Y) && (this.isProjectionDirty = !1),
-            Y || (Y = Bt()),
+            Y || (Y = Nt()),
             je(Y, this.relativeTarget)),
           _ &&
             ((this.animationValues = g), zA(g, p, this.latestValues, j, q, N)),
@@ -17011,7 +17011,7 @@ function n0({
           p &&
           i0(this.options.animationType, this.layout.layoutBox, p.layoutBox)
         ) {
-          y = this.target || Bt();
+          y = this.target || Nt();
           const S = oe(this.layout.layoutBox.x);
           (y.x.min = f.target.x.min), (y.x.max = y.x.min + S);
           const T = oe(this.layout.layoutBox.y);
@@ -17230,9 +17230,9 @@ function ZA(i) {
       if (S && !S.resumeFrom) {
         const { snapshot: T, layout: M } = S;
         if (T && M) {
-          const O = Bt();
+          const O = Nt();
           Ol(O, s.layoutBox, T.layoutBox);
-          const _ = Bt();
+          const _ = Nt();
           Ol(_, u, M.layoutBox),
             t0(O, _) || (g = !0),
             S.options.layoutRoot &&
@@ -17844,7 +17844,7 @@ class VE {
   measureViewportBox() {
     return this.current
       ? this.measureInstanceViewportBox(this.current, this.props)
-      : Bt();
+      : Nt();
   }
   getStaticValue(a) {
     return this.latestValues[a];
@@ -18035,7 +18035,7 @@ class NE extends r0 {
     super(...arguments),
       (this.type = "svg"),
       (this.isSVGTag = !1),
-      (this.measureInstanceViewportBox = Bt),
+      (this.measureInstanceViewportBox = Nt),
       (this.updateDimensions = () => {
         this.current &&
           !this.renderState.dimensions &&
@@ -18075,10 +18075,10 @@ const LE = (i, a) =>
   jE = ub({ ...$T, ...xE, ...rE, ...OE }, LE),
   o0 = E1(jE);
 function HE() {
-  return Nt.jsx("main", {
+  return Lt.jsx("main", {
     className:
       "w-full h-screen font-mono text-slate-100 flex gap-8 justify-center items-center bg-slate-800",
-    children: Nt.jsx(o0.p, {
+    children: Lt.jsx(o0.p, {
       initial: { y: 0 },
       transition: { repeat: 1 / 0, duration: 3, ease: "easeIn" },
       animate: { y: [0, 10, 40, 10, 0] },
@@ -20209,26 +20209,26 @@ function z0(i) {
     s
   );
 }
-const Lt = z0(Yl);
-Lt.Axios = Ri;
-Lt.CanceledError = Ta;
-Lt.CancelToken = m2;
-Lt.isCancel = D0;
-Lt.VERSION = U0;
-Lt.toFormData = Ou;
-Lt.AxiosError = st;
-Lt.Cancel = Lt.CanceledError;
-Lt.all = function (a) {
+const zt = z0(Yl);
+zt.Axios = Ri;
+zt.CanceledError = Ta;
+zt.CancelToken = m2;
+zt.isCancel = D0;
+zt.VERSION = U0;
+zt.toFormData = Ou;
+zt.AxiosError = st;
+zt.Cancel = zt.CanceledError;
+zt.all = function (a) {
   return Promise.all(a);
 };
-Lt.spread = p2;
-Lt.isAxiosError = y2;
-Lt.mergeConfig = Di;
-Lt.AxiosHeaders = de;
-Lt.formToJSON = (i) => R0(w.isHTMLForm(i) ? new FormData(i) : i);
-Lt.getAdapter = w0.getAdapter;
-Lt.HttpStatusCode = Cc;
-Lt.default = Lt;
+zt.spread = p2;
+zt.isAxiosError = y2;
+zt.mergeConfig = Di;
+zt.AxiosHeaders = de;
+zt.formToJSON = (i) => R0(w.isHTMLForm(i) ? new FormData(i) : i);
+zt.getAdapter = w0.getAdapter;
+zt.HttpStatusCode = Cc;
+zt.default = zt;
 const {
   Axios: A2,
   AxiosError: E2,
@@ -20246,17 +20246,23 @@ const {
   formToJSON: B2,
   getAdapter: N2,
   mergeConfig: L2,
-} = Lt;
+} = zt;
+zt.defaults.withCredentials = !0;
 function g2({ setValid: i }) {
   const [a, s] = it.useState(""),
     [u, c] = it.useState(""),
     h = async (f) => {
       f.preventDefault(), console.log(a, u);
       try {
-        const m = await Lt.post(
+        const m = await zt.post(
           "http://127.0.0.1:8080/login",
           { username: a, password: u },
-          { headers: { "Content-Type": "application/json" } }
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            },
+          }
         );
         m.status == 200 && (console.log("Correct"), i(!0)), console.log(m);
       } catch (m) {
@@ -20264,28 +20270,28 @@ function g2({ setValid: i }) {
       }
       s(""), c("");
     };
-  return Nt.jsxs("main", {
+  return Lt.jsxs("main", {
     className:
       "w-full h-screen text-slate-100 flex gap-8 justify-center items-center bg-slate-800",
     children: [
-      Nt.jsx("img", {
+      Lt.jsx("img", {
         className: "w-48 h-48 rounded-xl border-2 border-orange-300",
         src: qE,
         alt: "nasgor",
       }),
-      Nt.jsxs("form", {
+      Lt.jsxs("form", {
         onSubmit: h,
         className:
           "w-80 h-72 mx-10 flex flex-col items-center justify-center rounded-xl bg-orange-900 gap-4 font-bold",
         children: [
-          Nt.jsxs("div", {
+          Lt.jsxs("div", {
             children: [
-              Nt.jsx("label", {
+              Lt.jsx("label", {
                 className: "flex",
                 htmlFor: "username",
                 children: "Username",
               }),
-              Nt.jsx("input", {
+              Lt.jsx("input", {
                 value: a,
                 onChange: (f) => s(f.target.value),
                 id: "username",
@@ -20294,14 +20300,14 @@ function g2({ setValid: i }) {
               }),
             ],
           }),
-          Nt.jsxs("div", {
+          Lt.jsxs("div", {
             children: [
-              Nt.jsx("label", {
+              Lt.jsx("label", {
                 className: "flex",
                 htmlFor: "password",
                 children: "Password",
               }),
-              Nt.jsx("input", {
+              Lt.jsx("input", {
                 value: u,
                 onChange: (f) => c(f.target.value),
                 id: "password",
@@ -20310,7 +20316,7 @@ function g2({ setValid: i }) {
               }),
             ],
           }),
-          Nt.jsx(o0.button, {
+          Lt.jsx(o0.button, {
             initial: { backgroundColor: "#1d293d" },
             animate: {
               backgroundColor: ["#7e2a0c", "#1d293d", "#ffffff", "#7e2a0c"],
@@ -20326,10 +20332,10 @@ function g2({ setValid: i }) {
 }
 function v2() {
   const [i, a] = it.useState(!1);
-  return Nt.jsx(Nt.Fragment, {
-    children: i ? Nt.jsx(HE, {}) : Nt.jsx(g2, { setValid: a }),
+  return Lt.jsx(Lt.Fragment, {
+    children: i ? Lt.jsx(HE, {}) : Lt.jsx(g2, { setValid: a }),
   });
 }
 h1.createRoot(document.getElementById("root")).render(
-  Nt.jsx(it.StrictMode, { children: Nt.jsx(v2, {}) })
+  Lt.jsx(it.StrictMode, { children: Lt.jsx(v2, {}) })
 );
