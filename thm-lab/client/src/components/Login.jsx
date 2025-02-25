@@ -18,7 +18,7 @@ export default function Login({ setValid }) {
         console.log(uname, passwd)
 
         try {
-            const res = await axios.post("http://0.0.0.0:8080/login", {
+            const res = await axios.post("http://127.0.0.1:8080/login", {
                 username: uname,
                 password: passwd,
             }, {
