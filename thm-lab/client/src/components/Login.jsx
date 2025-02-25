@@ -2,23 +2,40 @@ import { useState } from "react"
 import nasgor from "../assets/nasgor.webp"
 import { motion } from "motion/react"
 
-export default function Login() {
+import axios from "axios"
+
+
+// eslint-disable-next-line react/prop-types
+export default function Login({ setValid }) {
 
     const [uname, setUname] = useState("")
     const [passwd, setPasswd] = useState("")
 
-    const [creds, setCreds] = useState({
-        username: "",
-        password: ""
-    })
 
-
-    const credsHandler = (e) => {
+    const credsHandler = async (e) => {
         e.preventDefault()
-        setCreds({
-            username: uname,
-            password: passwd
-        })
+
+        console.log(uname, passwd)
+
+        try {
+            const res = await axios.post("http://127.0.0.1:8080/login", {
+                username: uname,
+                password: passwd,
+            }, {
+                headers: { "Content-Type": "application/json" }
+            })
+
+            if (res.status == 200) {
+                console.log('Correct')
+                setValid(true)
+            }
+
+            console.log(res)
+
+
+        } catch (error) {
+            console.log(error)
+        }
 
         setUname("")
         setPasswd("")
@@ -41,8 +58,6 @@ export default function Login() {
 
                 <motion.button initial={{ backgroundColor: '#1d293d' }} animate={{ backgroundColor: ['#7e2a0c', '#1d293d', '#ffffff', '#7e2a0c'] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeIn' }} className="p-2 px-5 rounded-sm">Login</motion.button>
             </form>
-
-            <p>{creds.username} + {creds.password}</p>
         </main>
     )
 }
