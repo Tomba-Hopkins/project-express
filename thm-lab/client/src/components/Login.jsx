@@ -2,10 +2,6 @@ import { useState } from "react"
 import nasgor from "../assets/nasgor.webp"
 import { motion } from "motion/react"
 
-import axios from "axios"
-
-axios.defaults.withCredentials = true
-
 
 // eslint-disable-next-line react/prop-types
 export default function Login({ setValid }) {
