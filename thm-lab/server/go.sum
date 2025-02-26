@@ -1,2 +1,4 @@
 github.com/Tomba-Hopkins/project-express/belajar-golang v0.0.0-20250225114625-083806165715 h1:MSpk1sYJ8ARcdcFBXUe6/QAc0tk1SD+TvO1CIt/LacY=
 github.com/Tomba-Hopkins/project-express/belajar-golang v0.0.0-20250225114625-083806165715/go.mod h1:DgcD82IBi1qp6BpAstk4/XLGVlQq6BHsaEd0yzWpDuw=
+github.com/rs/cors v1.11.1 h1:eU3gRzXLRK57F5rKMGMZURNdIG4EoAmX8k94r9wXWHA=
+github.com/rs/cors v1.11.1/go.mod h1:XyqrcTp5zjWr1wsJ8PIRZssZ8b/WMcMf71DJnit4EMU=

@@ -16,7 +16,7 @@ export default function Login({ setValid }) {
         console.log(uname, passwd)
 
         try {
-            const res = await fetch("http://127.0.0.1:8080/login", {
+            const res = await fetch("http:ip_mu:8080/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -29,8 +29,8 @@ export default function Login({ setValid }) {
 
             if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
 
-            const data = await res.json();
-            console.log("Correct", data);
+
+            console.log("Correct", res);
             setValid(true);
 
 
