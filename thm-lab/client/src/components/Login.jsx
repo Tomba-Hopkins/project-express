@@ -20,19 +20,22 @@ export default function Login({ setValid }) {
         console.log(uname, passwd)
 
         try {
-            const res = await axios.post("http://127.0.0.1:8080/login", {
-                username: uname,
-                password: passwd,
-            }, {
-                headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "application/json" }
-            },)
+            const res = await fetch("http://127.0.0.1:8080/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: uname,
+                    password: passwd
+                })
+            });
 
-            if (res.status == 200) {
-                console.log('Correct')
-                setValid(true)
-            }
+            if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
 
-            console.log(res)
+            const data = await res.json();
+            console.log("Correct", data);
+            setValid(true);
 
 
         } catch (error) {
