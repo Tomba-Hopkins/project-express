@@ -2,6 +2,7 @@ import { useState } from "react"
 import nasgor from "../assets/nasgor.webp"
 import { motion } from "motion/react"
 
+const ip = window.location.origin
 
 // eslint-disable-next-line react/prop-types
 export default function Login({ setValid }) {
@@ -11,12 +12,13 @@ export default function Login({ setValid }) {
 
 
     const credsHandler = async (e) => {
+        console.log(ip)
         e.preventDefault()
 
         console.log(uname, passwd)
 
         try {
-            const res = await fetch("http:ip_mu:8080/login", {
+            const res = await fetch(`http://${ip}:8080/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
